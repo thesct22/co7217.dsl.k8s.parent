@@ -1,0 +1,3 @@
+include 'co7217.dsl.k8s'
+include 'co7217.dsl.k8s.ide'
+include 'co7217.dsl.k8s.web'

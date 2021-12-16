@@ -1,0 +1,9 @@
+grammar co7217.dsl.k8s.Deployment with org.eclipse.xtext.common.Terminals
+
+generate deployment "http://www.dsl.co7217/k8s/Deployment"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
