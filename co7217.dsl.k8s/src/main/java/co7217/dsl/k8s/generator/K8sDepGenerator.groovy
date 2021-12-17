@@ -37,7 +37,7 @@ class K8sDepGenerator {
 		
 		//println(model.Headers.Metrices.toString())
 		println text
-		File output = newFile('src/main/resources/dep1.yaml')
+		File output = new File('src/main/resources/dep1.yaml')
 		output.createNewFile()
 		output << text
 	}

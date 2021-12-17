@@ -12,7 +12,7 @@ import co7217.dsl.k8s.deployment.Model
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DeploymentInjectorProvider)
-class DeploymentParsingTest2 {
+class DeploymentParsingTest3 {
 	@Inject
 	// Model is the start symbol of the grammar,
 	// update the name accordingly.
@@ -24,32 +24,30 @@ class DeploymentParsingTest2 {
 deployment
 ---
 {
-name="dsl-example",
-namespace="xyz",
+name="same-for-dep-and-hpa",
 label{
-    app="dsl-example"
+    app="dsl-example",
+	label2="moreLabels",
+	label3="evenmore"
 },
 
 replicas=3,
 container{
     name= "busybox",
     image= "gcr.io/google-containers/busybox:latest"
-},
-container{
-    name="defaultbackend",
-    image="gcr.io/google-containers/defaultbackend:latest"
 }
 }
+
+
 ---
 hpa
 ---
 {
 name="hpa",
-namespace ="xyz",
 label{
     app="dsl-example"
 },
-target="dsl-example",   
+target="same-for-dep-and-hpa",   
 minimum=1,
 maximum=5,
 metrices{
@@ -63,9 +61,9 @@ service
 ---
 {
 name="service",
-namespace ="xyz",
 label{
-    app="dsl-example"
+    app="dsl-example",
+	label2="randomLabel"
 },
 port{
     name="busybox-expose",
@@ -73,16 +71,9 @@ port{
     inport=80,
     targetport=80
 },
-port{
-    name="backend-expose",
-    protocol=TCP,
-    inport=8080,
-    targetport=8080
-},
 targetLabel="app",
 targetName="dsl-example",
-type=LoadBalancer,
-IP="192.168.19.18"
+type=LoadBalancer
 }
 """)
 		Assertions.assertNotNull(result)

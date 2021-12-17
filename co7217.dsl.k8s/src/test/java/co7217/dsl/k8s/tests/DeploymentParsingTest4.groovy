@@ -12,7 +12,7 @@ import co7217.dsl.k8s.deployment.Model
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DeploymentInjectorProvider)
-class DeploymentParsingTest2 {
+class DeploymentParsingTest4 {
 	@Inject
 	// Model is the start symbol of the grammar,
 	// update the name accordingly.
@@ -24,70 +24,46 @@ class DeploymentParsingTest2 {
 deployment
 ---
 {
-name="dsl-example",
-namespace="xyz",
+name="another-example",
 label{
-    app="dsl-example"
+    alabel="make-this-same-for-svc-and-dep",
+	label2="moreLabels"
 },
 
-replicas=3,
+replicas=9,
 container{
     name= "busybox",
     image= "gcr.io/google-containers/busybox:latest"
-},
-container{
-    name="defaultbackend",
-    image="gcr.io/google-containers/defaultbackend:latest"
 }
 }
----
-hpa
----
-{
-name="hpa",
-namespace ="xyz",
-label{
-    app="dsl-example"
-},
-target="dsl-example",   
-minimum=1,
-maximum=5,
-metrices{
-    cpu=80
-}
-}
-
 
 ---
 service
 ---
 {
 name="service",
-namespace ="xyz",
+
+
 label{
-    app="dsl-example"
+    app    =       "dsl-example",
+	label2="randomLabel"
 },
 port{
     name="busybox-expose",
     protocol=TCP,
-    inport=80,
+    inport      =      80    ,
     targetport=80
 },
-port{
-    name="backend-expose",
-    protocol=TCP,
-    inport=8080,
-    targetport=8080
-},
-targetLabel="app",
-targetName="dsl-example",
-type=LoadBalancer,
-IP="192.168.19.18"
+
+
+targetLabel="alabel",
+targetName="make-this-same-for-svc-and-dep",
+type=LoadBalancer
 }
 """)
 		Assertions.assertNotNull(result)
 		def errors = result.eResource().errors
-		Assertions.assertTrue(errors.isEmpty(), 
+		Assertions.assertTrue(errors.isEmpty(),
 			"""Unexpected errors: ${errors.join(", ")}""")
 	}
 }
