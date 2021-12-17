@@ -11,6 +11,8 @@ import co7217.dsl.k8s.deployment.Hpa;
 import co7217.dsl.k8s.deployment.Label;
 import co7217.dsl.k8s.deployment.Metrice;
 import co7217.dsl.k8s.deployment.Model;
+import co7217.dsl.k8s.deployment.Port;
+import co7217.dsl.k8s.deployment.Svc;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -53,6 +55,13 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass containerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass metriceEClass = null;
 
   /**
@@ -60,7 +69,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass containerEClass = null;
+  private EClass portEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,6 +84,13 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   private EClass hpaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass svcEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -244,6 +260,39 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
+  public EClass getContainer()
+  {
+    return containerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContainer_Name()
+  {
+    return (EAttribute)containerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContainer_Image()
+  {
+    return (EAttribute)containerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getMetrice()
   {
     return metriceEClass;
@@ -277,9 +326,9 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EClass getContainer()
+  public EClass getPort()
   {
-    return containerEClass;
+    return portEClass;
   }
 
   /**
@@ -288,9 +337,9 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EAttribute getContainer_Name()
+  public EAttribute getPort_Name()
   {
-    return (EAttribute)containerEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)portEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -299,9 +348,31 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EAttribute getContainer_Image()
+  public EAttribute getPort_Protocol()
   {
-    return (EAttribute)containerEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)portEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPort_Inport()
+  {
+    return (EAttribute)portEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPort_Targetport()
+  {
+    return (EAttribute)portEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -398,6 +469,72 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
+  public EClass getSvc()
+  {
+    return svcEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSvc_Ports()
+  {
+    return (EReference)svcEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSvc_TargetLabel()
+  {
+    return (EAttribute)svcEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSvc_TargetName()
+  {
+    return (EAttribute)svcEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSvc_Type()
+  {
+    return (EAttribute)svcEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSvc_IP()
+  {
+    return (EAttribute)svcEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public DeploymentFactory getDeploymentFactory()
   {
     return (DeploymentFactory)getEFactoryInstance();
@@ -435,13 +572,19 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     createEAttribute(labelEClass, LABEL__NAME);
     createEAttribute(labelEClass, LABEL__VALUE);
 
+    containerEClass = createEClass(CONTAINER);
+    createEAttribute(containerEClass, CONTAINER__NAME);
+    createEAttribute(containerEClass, CONTAINER__IMAGE);
+
     metriceEClass = createEClass(METRICE);
     createEAttribute(metriceEClass, METRICE__RESOURCE);
     createEAttribute(metriceEClass, METRICE__LIMIT);
 
-    containerEClass = createEClass(CONTAINER);
-    createEAttribute(containerEClass, CONTAINER__NAME);
-    createEAttribute(containerEClass, CONTAINER__IMAGE);
+    portEClass = createEClass(PORT);
+    createEAttribute(portEClass, PORT__NAME);
+    createEAttribute(portEClass, PORT__PROTOCOL);
+    createEAttribute(portEClass, PORT__INPORT);
+    createEAttribute(portEClass, PORT__TARGETPORT);
 
     depEClass = createEClass(DEP);
     createEAttribute(depEClass, DEP__REPLICAS);
@@ -452,6 +595,13 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     createEAttribute(hpaEClass, HPA__MINIMUM);
     createEAttribute(hpaEClass, HPA__MAXIMUM);
     createEReference(hpaEClass, HPA__METRICES);
+
+    svcEClass = createEClass(SVC);
+    createEReference(svcEClass, SVC__PORTS);
+    createEAttribute(svcEClass, SVC__TARGET_LABEL);
+    createEAttribute(svcEClass, SVC__TARGET_NAME);
+    createEAttribute(svcEClass, SVC__TYPE);
+    createEAttribute(svcEClass, SVC__IP);
   }
 
   /**
@@ -485,6 +635,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     // Add supertypes to classes
     depEClass.getESuperTypes().add(this.getHeader());
     hpaEClass.getESuperTypes().add(this.getHeader());
+    svcEClass.getESuperTypes().add(this.getHeader());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -499,13 +650,19 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     initEAttribute(getLabel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLabel_Value(), ecorePackage.getEString(), "value", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(containerEClass, co7217.dsl.k8s.deployment.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContainer_Name(), ecorePackage.getEString(), "Name", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContainer_Image(), ecorePackage.getEString(), "Image", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(metriceEClass, Metrice.class, "Metrice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetrice_Resource(), ecorePackage.getEString(), "resource", null, 0, 1, Metrice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMetrice_Limit(), ecorePackage.getEInt(), "limit", null, 0, 1, Metrice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(containerEClass, co7217.dsl.k8s.deployment.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getContainer_Name(), ecorePackage.getEString(), "Name", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getContainer_Image(), ecorePackage.getEString(), "Image", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPort_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPort_Protocol(), ecorePackage.getEString(), "Protocol", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPort_Inport(), ecorePackage.getEInt(), "inport", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPort_Targetport(), ecorePackage.getEInt(), "targetport", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(depEClass, Dep.class, "Dep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDep_Replicas(), ecorePackage.getEInt(), "Replicas", null, 0, 1, Dep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -516,6 +673,13 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     initEAttribute(getHpa_Minimum(), ecorePackage.getEInt(), "Minimum", null, 0, 1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHpa_Maximum(), ecorePackage.getEInt(), "Maximum", null, 0, 1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getHpa_Metrices(), this.getMetrice(), null, "Metrices", null, 0, -1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(svcEClass, Svc.class, "Svc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSvc_Ports(), this.getPort(), null, "Ports", null, 0, -1, Svc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSvc_TargetLabel(), ecorePackage.getEString(), "TargetLabel", null, 0, 1, Svc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSvc_TargetName(), ecorePackage.getEString(), "TargetName", null, 0, 1, Svc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSvc_Type(), ecorePackage.getEString(), "Type", null, 0, 1, Svc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSvc_IP(), ecorePackage.getEString(), "IP", null, 0, 1, Svc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

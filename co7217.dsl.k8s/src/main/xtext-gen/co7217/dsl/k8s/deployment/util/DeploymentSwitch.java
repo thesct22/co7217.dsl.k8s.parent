@@ -94,6 +94,13 @@ public class DeploymentSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DeploymentPackage.CONTAINER:
+      {
+        Container container = (Container)theEObject;
+        T result = caseContainer(container);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DeploymentPackage.METRICE:
       {
         Metrice metrice = (Metrice)theEObject;
@@ -101,10 +108,10 @@ public class DeploymentSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DeploymentPackage.CONTAINER:
+      case DeploymentPackage.PORT:
       {
-        Container container = (Container)theEObject;
-        T result = caseContainer(container);
+        Port port = (Port)theEObject;
+        T result = casePort(port);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,6 +128,14 @@ public class DeploymentSwitch<T> extends Switch<T>
         Hpa hpa = (Hpa)theEObject;
         T result = caseHpa(hpa);
         if (result == null) result = caseHeader(hpa);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DeploymentPackage.SVC:
+      {
+        Svc svc = (Svc)theEObject;
+        T result = caseSvc(svc);
+        if (result == null) result = caseHeader(svc);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -177,6 +192,22 @@ public class DeploymentSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Container</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Container</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContainer(Container object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Metrice</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -193,17 +224,17 @@ public class DeploymentSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Container</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Port</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Container</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Port</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseContainer(Container object)
+  public T casePort(Port object)
   {
     return null;
   }
@@ -236,6 +267,22 @@ public class DeploymentSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseHpa(Hpa object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Svc</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Svc</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSvc(Svc object)
   {
     return null;
   }

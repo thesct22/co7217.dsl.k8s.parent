@@ -10,6 +10,8 @@ import co7217.dsl.k8s.deployment.Hpa;
 import co7217.dsl.k8s.deployment.Label;
 import co7217.dsl.k8s.deployment.Metrice;
 import co7217.dsl.k8s.deployment.Model;
+import co7217.dsl.k8s.deployment.Port;
+import co7217.dsl.k8s.deployment.Svc;
 import co7217.dsl.k8s.services.DeploymentGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -54,6 +56,12 @@ public class DeploymentSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case DeploymentPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
+				return; 
+			case DeploymentPackage.PORT:
+				sequence_Port(context, (Port) semanticObject); 
+				return; 
+			case DeploymentPackage.SVC:
+				sequence_Svc(context, (Svc) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -175,6 +183,56 @@ public class DeploymentSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Headers+=Header+
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Port returns Port
+	 *
+	 * Constraint:
+	 *     (Name=STRING Protocol=Protocol inport=INT targetport=INT)
+	 */
+	protected void sequence_Port(ISerializationContext context, Port semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.PORT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.PORT__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.PORT__PROTOCOL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.PORT__PROTOCOL));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.PORT__INPORT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.PORT__INPORT));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.PORT__TARGETPORT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.PORT__TARGETPORT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPortAccess().getNameSTRINGTerminalRuleCall_4_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPortAccess().getProtocolProtocolParserRuleCall_8_0(), semanticObject.getProtocol());
+		feeder.accept(grammarAccess.getPortAccess().getInportINTTerminalRuleCall_12_0(), semanticObject.getInport());
+		feeder.accept(grammarAccess.getPortAccess().getTargetportINTTerminalRuleCall_16_0(), semanticObject.getTargetport());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Header returns Svc
+	 *     Svc returns Svc
+	 *
+	 * Constraint:
+	 *     (
+	 *         Name=STRING 
+	 *         Namespace=STRING? 
+	 *         Labels+=Label 
+	 *         Labels+=Label* 
+	 *         Ports+=Port+ 
+	 *         TargetLabel=STRING 
+	 *         TargetName=STRING 
+	 *         Type=Type 
+	 *         IP=STRING?
+	 *     )
+	 */
+	protected void sequence_Svc(ISerializationContext context, Svc semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

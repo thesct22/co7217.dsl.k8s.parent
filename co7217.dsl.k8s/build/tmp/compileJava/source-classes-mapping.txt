@@ -25,6 +25,8 @@ co7217/dsl/k8s/scoping/AbstractDeploymentScopeProvider.java
  co7217.dsl.k8s.scoping.AbstractDeploymentScopeProvider
 co7217/dsl/k8s/deployment/impl/DeploymentFactoryImpl.java
  co7217.dsl.k8s.deployment.impl.DeploymentFactoryImpl
+co7217/dsl/k8s/deployment/impl/PortImpl.java
+ co7217.dsl.k8s.deployment.impl.PortImpl
 co7217/dsl/k8s/DeploymentRuntimeModule.java
  co7217.dsl.k8s.DeploymentRuntimeModule
 co7217/dsl/k8s/DeploymentStandaloneSetupGenerated.java
@@ -40,11 +42,19 @@ co7217/dsl/k8s/services/DeploymentGrammarAccess.java
  co7217.dsl.k8s.services.DeploymentGrammarAccess$LabelElements
  co7217.dsl.k8s.services.DeploymentGrammarAccess$MetriceElements
  co7217.dsl.k8s.services.DeploymentGrammarAccess$ModelElements
+ co7217.dsl.k8s.services.DeploymentGrammarAccess$PortElements
+ co7217.dsl.k8s.services.DeploymentGrammarAccess$ProtocolElements
  co7217.dsl.k8s.services.DeploymentGrammarAccess$ResourceElements
+ co7217.dsl.k8s.services.DeploymentGrammarAccess$SvcElements
+ co7217.dsl.k8s.services.DeploymentGrammarAccess$TypeElements
 co7217/dsl/k8s/AbstractDeploymentRuntimeModule.java
  co7217.dsl.k8s.AbstractDeploymentRuntimeModule
 co7217/dsl/k8s/deployment/impl/MetriceImpl.java
  co7217.dsl.k8s.deployment.impl.MetriceImpl
+co7217/dsl/k8s/deployment/impl/SvcImpl.java
+ co7217.dsl.k8s.deployment.impl.SvcImpl
+co7217/dsl/k8s/deployment/Port.java
+ co7217.dsl.k8s.deployment.Port
 co7217/dsl/k8s/validation/DeploymentConfigurableIssueCodesProvider.java
  co7217.dsl.k8s.validation.DeploymentConfigurableIssueCodesProvider
 co7217/dsl/k8s/scoping/DeploymentScopeProvider.java
@@ -62,6 +72,8 @@ co7217/dsl/k8s/deployment/Model.java
  co7217.dsl.k8s.deployment.Model
 co7217/dsl/k8s/deployment/Metrice.java
  co7217.dsl.k8s.deployment.Metrice
+co7217/dsl/k8s/deployment/Svc.java
+ co7217.dsl.k8s.deployment.Svc
 co7217/dsl/k8s/deployment/Hpa.java
  co7217.dsl.k8s.deployment.Hpa
 co7217/dsl/k8s/deployment/impl/DepImpl.java

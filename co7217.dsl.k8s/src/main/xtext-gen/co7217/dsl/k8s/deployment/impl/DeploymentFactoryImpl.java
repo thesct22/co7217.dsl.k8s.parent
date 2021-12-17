@@ -68,10 +68,12 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
       case DeploymentPackage.MODEL: return createModel();
       case DeploymentPackage.HEADER: return createHeader();
       case DeploymentPackage.LABEL: return createLabel();
-      case DeploymentPackage.METRICE: return createMetrice();
       case DeploymentPackage.CONTAINER: return createContainer();
+      case DeploymentPackage.METRICE: return createMetrice();
+      case DeploymentPackage.PORT: return createPort();
       case DeploymentPackage.DEP: return createDep();
       case DeploymentPackage.HPA: return createHpa();
+      case DeploymentPackage.SVC: return createSvc();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -119,6 +121,18 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
    * @generated
    */
   @Override
+  public co7217.dsl.k8s.deployment.Container createContainer()
+  {
+    ContainerImpl container = new ContainerImpl();
+    return container;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Metrice createMetrice()
   {
     MetriceImpl metrice = new MetriceImpl();
@@ -131,10 +145,10 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
    * @generated
    */
   @Override
-  public co7217.dsl.k8s.deployment.Container createContainer()
+  public Port createPort()
   {
-    ContainerImpl container = new ContainerImpl();
-    return container;
+    PortImpl port = new PortImpl();
+    return port;
   }
 
   /**
@@ -159,6 +173,18 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
   {
     HpaImpl hpa = new HpaImpl();
     return hpa;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Svc createSvc()
+  {
+    SvcImpl svc = new SvcImpl();
+    return svc;
   }
 
   /**

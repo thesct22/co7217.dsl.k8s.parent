@@ -8,9 +8,11 @@ import co7217.dsl.k8s.DeploymentStandaloneSetup
 import co7217.dsl.k8s.deployment.Model
 import co7217.dsl.k8s.deployment.Hpa
 import co7217.dsl.k8s.deployment.Dep
+import co7217.dsl.k8s.deployment.Svc
 import co7217.dsl.k8s.deployment.Label
 import co7217.dsl.k8s.deployment.Metrice
 import co7217.dsl.k8s.deployment.Container
+import co7217.dsl.k8s.deployment.Port
 
 import com.google.inject.Injector
 
@@ -35,10 +37,12 @@ class K8sDepGenerator {
 		
 		//println(model.Headers.Metrices.toString())
 		println text
-//		File output = newFile('src/main/resources/output.yaml')
-//		output.createNewFile()
-//		output << text
+		File output = newFile('src/main/resources/dep1.yaml')
+		output.createNewFile()
+		output << text
 	}
+	
+	//process list of elements
 	def static String toYaml(List<EObject> list) {
 		String text = ''
 		for (obj in list) {
@@ -47,18 +51,26 @@ class K8sDepGenerator {
 		text
 	}
 	
+	//process individual elements in the list
 	def static String toYaml(EObject obj) {
 		String text = ""
 		switch(obj) {
 			
-			//for Deployment definition
+			
+			
+//------------------------------For Deployment definition-------------------------------------------//
 			case Dep:
+			
+				//initial boilerplate of deployment in YAML
 				text+="""
 ---
 apiVersion: "apps/v1"
 kind: "Deployment"
 """
+				//make metadata like name and label
 				text+=makeMetadata(obj)
+				
+				//specifications like replicas and containers
 				text+="""spec:
   replicas: ${obj.Replicas}
   selector:
@@ -72,12 +84,16 @@ kind: "Deployment"
 				text+="""    spec:
       containers:
 """
+				//for defining all the containers in a list of containers to be added to the pod
 				text+=toYaml(obj.Containers)
 				break
+	
+						
 			
-			
-			//for Horizontal Pod Autoscaler definition
+//---------------------------For Horizontal Pod Autoscaler definition-----------------------------//
 			case Hpa :
+			
+				//initial boilerplate for HPA
 				text+="""
 ---
 apiVersion: "autoscaling/v2beta1"
@@ -97,28 +113,57 @@ kind: "HorizontalPodAutoscaler"
 				text+=makeMetrices(obj)
 				break
 
-//			case svc:
-//				text+="""
-//---
-//apiVersion: "v1"
-//kind: "Service"
-//"""
-//				break
 				
-			//for defining containers in the pod
+				
+//-----------------------------------For Service definition------------------------------------//
+			case Svc:
+			
+				//initial boilerplate for service
+				text+="""
+---
+apiVersion: "v1"
+kind: "Service"
+"""
+				//for writing metadata like name and labels
+				text+=makeMetadata(obj)
+				text+="""spec:
+  ports:
+"""
+				text+=toYaml(obj.Ports)
+				text+="""  selector:
+    ${obj.targetLabel}: "${obj.targetName}"
+"""
+				text+="""  type: "${obj.type}"
+"""
+				//all this to check if Loadbalancer then print loadbalancerIP if IP is present
+				//or if ClusterIP print clusterIP if IP present
+				text+="""  ${obj.type=='LoadBalancer'?
+					/LoadBalancerIP: ${obj.IP?"\"${obj.IP}\"":'""'}/
+					:obj.type=='ClusterIP'?
+					/ClusterIP: ${obj.IP?"\"${obj.IP}\"":'""'}/:''}
+"""
+				break
+				
+				
+				
+//------------------------------For defining containers in the pod------------------------------//
 			case Container:
 				text+="""      - name: "${obj.name}"
         image: "${obj.image}"
 """
 				break
 				
-			//for defining all labels for deployments, HPAs and Services
+				
+				
+//----------------For defining all labels for deployments, HPAs and Services-------------------//
 			case Label:
 				text+="""    ${obj.name}: "${obj.value}"
 """
 				break
 				
-			//for defining scaling metrices in HPA
+				
+				
+//----------------------------For defining scaling metrices in HPA-----------------------------//
 			case Metrice:
 				text+="""  - type: "Resource"
     resource:
@@ -126,11 +171,26 @@ kind: "HorizontalPodAutoscaler"
       targetAverageUtilization: ${obj.limit}
 """
 				break
+				
+				
+				
+//------------------------------For defining ports of the service------------------------------//
+			case Port:
+				text+="""  - name: "${obj.Name}"
+    protocol: "${obj.Protocol}"
+    port: ${obj.inport}
+    targetPort: ${obj.targetport}
+"""	
+				break
+			
+				
 		}
 		text
 	}
 	
-	//makes metadata for all sections
+	
+	
+//-----------------------------Makes metadata for all sections--------------------------------//
 	def static String makeMetadata(EObject obj) {
 		String text ="""metadata:
   name: "${obj.Name}"
@@ -141,7 +201,9 @@ kind: "HorizontalPodAutoscaler"
 		text
 	}
 	
-	//makes metrices subsection of HPA
+	
+	
+//-----------------------------Makes metrices subsection of HPA-------------------------------//
 	def static String makeMetrices(EObject obj) {
 		String text="""  metrics:
 """

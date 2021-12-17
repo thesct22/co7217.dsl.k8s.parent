@@ -7,11 +7,19 @@ Model:
 ;
 
 Header:
-	Hpa|Dep//|Svc
+	Hpa|Dep|Svc
 ;
 
 Label:
 	name=ID '=' value=STRING 
+;
+
+
+Container:
+	'container' '{'
+		'name' '=' Name=STRING ','
+		'image' '=' Image=STRING
+	'}'
 ;
 
 Metrice:
@@ -22,14 +30,24 @@ Resource:
 	'memory' | 'cpu'
 ;
 
-Container:
-	'container' '{'
-		'name' '=' Name=STRING ','
-		'image' '=' Image=STRING
+Port:
+	'port' '{'
+	'name' '=' Name=STRING ','
+	'protocol' '=' Protocol=Protocol ','
+	'inport' '=' inport=INT ','
+	'targetport' '=' targetport=INT
 	'}'
 ;
 
+Protocol:
+	'TCP' | 'UDP' | 'HTTP'| 'HTTPS' 
+;
 
+Type:
+	'LoadBalancer' | 'NodePort' | 'ClusterIP'
+;
+
+//for Deployment part parsing
 Dep:
 	'---' 
 	'deployment'
@@ -48,7 +66,7 @@ Dep:
 '}'
 ;
 
-
+//for HPA part parsing
 Hpa:
 	'---' 
 	'hpa' 
@@ -71,7 +89,24 @@ Hpa:
 		'}'
 	'}'
 ;
-//
-//svc:
-//	
-//;
+
+//for Service part parsing
+Svc:
+	'---' 
+	'service'
+	'---'
+	'{' 
+		'name' '=' Name=STRING ','
+		('namespace' '=' Namespace=STRING  ',')?
+		'label' 
+		'{'
+			(Labels+=Label)
+			(',' Labels+=Label)*
+		'}' ','
+		(Ports+=Port ',')+
+		'targetLabel' '=' TargetLabel=STRING ','
+		'targetName' '=' TargetName=STRING ','
+		'type' '=' Type=Type
+		(',' 'IP' '=' IP=STRING)?
+	'}'
+;

@@ -1,17 +1,64 @@
 ---
+deployment
+---
+{
+name="dsl-example",
+namespace="xyz",
+label{
+    app="dsl-example"
+},
+
+replicas=3,
+container{
+    name= "busybox",
+    image= "gcr.io/google-containers/busybox:latest"
+},
+container{
+    name="defaultbackend",
+    image="gcr.io/google-containers/defaultbackend:latest"
+}
+}
+---
 hpa
 ---
 {
-	name="hpa",
-	namespace ="xyz",
-	label{
-	    app="dsl-example"
-	},
-	target="dsl-example",   
-	minimum=1,
-	maximum=5,
-	metrices{
-	    cpu=80,
-	    memory=50
-	}
+name="hpa",
+namespace ="xyz",
+label{
+    app="dsl-example"
+},
+target="dsl-example",   
+minimum=1,
+maximum=5,
+metrices{
+    cpu=80
+}
+}
+
+
+---
+service
+---
+{
+name="service",
+namespace ="xyz",
+label{
+    app="dsl-example"
+},
+port{
+    name="busybox-expose",
+    protocol=TCP,
+    inport=80,
+    targetport=80
+},
+port{
+    name="backend-expose",
+    protocol=TCP,
+    inport=8080,
+    targetport=8080
+},
+targetLabel="app",
+targetName="dsl-example",
+type=LoadBalancer,
+IP=192.168.19.18
 }

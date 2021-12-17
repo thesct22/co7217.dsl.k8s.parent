@@ -51,6 +51,15 @@ public interface DeploymentFactory extends EFactory
   Label createLabel();
 
   /**
+   * Returns a new object of class '<em>Container</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Container</em>'.
+   * @generated
+   */
+  Container createContainer();
+
+  /**
    * Returns a new object of class '<em>Metrice</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -60,13 +69,13 @@ public interface DeploymentFactory extends EFactory
   Metrice createMetrice();
 
   /**
-   * Returns a new object of class '<em>Container</em>'.
+   * Returns a new object of class '<em>Port</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Container</em>'.
+   * @return a new object of class '<em>Port</em>'.
    * @generated
    */
-  Container createContainer();
+  Port createPort();
 
   /**
    * Returns a new object of class '<em>Dep</em>'.
@@ -85,6 +94,15 @@ public interface DeploymentFactory extends EFactory
    * @generated
    */
   Hpa createHpa();
+
+  /**
+   * Returns a new object of class '<em>Svc</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Svc</em>'.
+   * @generated
+   */
+  Svc createSvc();
 
   /**
    * Returns the package supported by this factory.

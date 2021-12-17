@@ -169,43 +169,6 @@ public interface DeploymentPackage extends EPackage
   int LABEL_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.MetriceImpl <em>Metrice</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see co7217.dsl.k8s.deployment.impl.MetriceImpl
-   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getMetrice()
-   * @generated
-   */
-  int METRICE = 3;
-
-  /**
-   * The feature id for the '<em><b>Resource</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRICE__RESOURCE = 0;
-
-  /**
-   * The feature id for the '<em><b>Limit</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRICE__LIMIT = 1;
-
-  /**
-   * The number of structural features of the '<em>Metrice</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METRICE_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.ContainerImpl <em>Container</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,7 +176,7 @@ public interface DeploymentPackage extends EPackage
    * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getContainer()
    * @generated
    */
-  int CONTAINER = 4;
+  int CONTAINER = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -243,6 +206,98 @@ public interface DeploymentPackage extends EPackage
   int CONTAINER_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.MetriceImpl <em>Metrice</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.MetriceImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getMetrice()
+   * @generated
+   */
+  int METRICE = 4;
+
+  /**
+   * The feature id for the '<em><b>Resource</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE__RESOURCE = 0;
+
+  /**
+   * The feature id for the '<em><b>Limit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE__LIMIT = 1;
+
+  /**
+   * The number of structural features of the '<em>Metrice</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.PortImpl <em>Port</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.PortImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getPort()
+   * @generated
+   */
+  int PORT = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Protocol</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORT__PROTOCOL = 1;
+
+  /**
+   * The feature id for the '<em><b>Inport</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORT__INPORT = 2;
+
+  /**
+   * The feature id for the '<em><b>Targetport</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORT__TARGETPORT = 3;
+
+  /**
+   * The number of structural features of the '<em>Port</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PORT_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.DepImpl <em>Dep</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -250,7 +305,7 @@ public interface DeploymentPackage extends EPackage
    * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getDep()
    * @generated
    */
-  int DEP = 5;
+  int DEP = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -314,7 +369,7 @@ public interface DeploymentPackage extends EPackage
    * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getHpa()
    * @generated
    */
-  int HPA = 6;
+  int HPA = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -387,6 +442,97 @@ public interface DeploymentPackage extends EPackage
    * @ordered
    */
   int HPA_FEATURE_COUNT = HEADER_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.SvcImpl <em>Svc</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.SvcImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getSvc()
+   * @generated
+   */
+  int SVC = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__NAME = HEADER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__NAMESPACE = HEADER__NAMESPACE;
+
+  /**
+   * The feature id for the '<em><b>Labels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__LABELS = HEADER__LABELS;
+
+  /**
+   * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__PORTS = HEADER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Target Label</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__TARGET_LABEL = HEADER_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Target Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__TARGET_NAME = HEADER_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__TYPE = HEADER_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>IP</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC__IP = HEADER_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>Svc</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SVC_FEATURE_COUNT = HEADER_FEATURE_COUNT + 5;
 
 
   /**
@@ -486,6 +632,38 @@ public interface DeploymentPackage extends EPackage
   EAttribute getLabel_Value();
 
   /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Container</em>'.
+   * @see co7217.dsl.k8s.deployment.Container
+   * @generated
+   */
+  EClass getContainer();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see co7217.dsl.k8s.deployment.Container#getName()
+   * @see #getContainer()
+   * @generated
+   */
+  EAttribute getContainer_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getImage <em>Image</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Image</em>'.
+   * @see co7217.dsl.k8s.deployment.Container#getImage()
+   * @see #getContainer()
+   * @generated
+   */
+  EAttribute getContainer_Image();
+
+  /**
    * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Metrice <em>Metrice</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -518,36 +696,58 @@ public interface DeploymentPackage extends EPackage
   EAttribute getMetrice_Limit();
 
   /**
-   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Port <em>Port</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Container</em>'.
-   * @see co7217.dsl.k8s.deployment.Container
+   * @return the meta object for class '<em>Port</em>'.
+   * @see co7217.dsl.k8s.deployment.Port
    * @generated
    */
-  EClass getContainer();
+  EClass getPort();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Port#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see co7217.dsl.k8s.deployment.Container#getName()
-   * @see #getContainer()
+   * @see co7217.dsl.k8s.deployment.Port#getName()
+   * @see #getPort()
    * @generated
    */
-  EAttribute getContainer_Name();
+  EAttribute getPort_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getImage <em>Image</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Port#getProtocol <em>Protocol</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Image</em>'.
-   * @see co7217.dsl.k8s.deployment.Container#getImage()
-   * @see #getContainer()
+   * @return the meta object for the attribute '<em>Protocol</em>'.
+   * @see co7217.dsl.k8s.deployment.Port#getProtocol()
+   * @see #getPort()
    * @generated
    */
-  EAttribute getContainer_Image();
+  EAttribute getPort_Protocol();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Port#getInport <em>Inport</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Inport</em>'.
+   * @see co7217.dsl.k8s.deployment.Port#getInport()
+   * @see #getPort()
+   * @generated
+   */
+  EAttribute getPort_Inport();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Port#getTargetport <em>Targetport</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Targetport</em>'.
+   * @see co7217.dsl.k8s.deployment.Port#getTargetport()
+   * @see #getPort()
+   * @generated
+   */
+  EAttribute getPort_Targetport();
 
   /**
    * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Dep <em>Dep</em>}'.
@@ -634,6 +834,71 @@ public interface DeploymentPackage extends EPackage
    * @generated
    */
   EReference getHpa_Metrices();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Svc <em>Svc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Svc</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc
+   * @generated
+   */
+  EClass getSvc();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Svc#getPorts <em>Ports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Ports</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc#getPorts()
+   * @see #getSvc()
+   * @generated
+   */
+  EReference getSvc_Ports();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Svc#getTargetLabel <em>Target Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Label</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc#getTargetLabel()
+   * @see #getSvc()
+   * @generated
+   */
+  EAttribute getSvc_TargetLabel();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Svc#getTargetName <em>Target Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Name</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc#getTargetName()
+   * @see #getSvc()
+   * @generated
+   */
+  EAttribute getSvc_TargetName();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Svc#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc#getType()
+   * @see #getSvc()
+   * @generated
+   */
+  EAttribute getSvc_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Svc#getIP <em>IP</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>IP</em>'.
+   * @see co7217.dsl.k8s.deployment.Svc#getIP()
+   * @see #getSvc()
+   * @generated
+   */
+  EAttribute getSvc_IP();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -737,6 +1002,32 @@ public interface DeploymentPackage extends EPackage
     EAttribute LABEL__VALUE = eINSTANCE.getLabel_Value();
 
     /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.ContainerImpl <em>Container</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.ContainerImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getContainer()
+     * @generated
+     */
+    EClass CONTAINER = eINSTANCE.getContainer();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTAINER__NAME = eINSTANCE.getContainer_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTAINER__IMAGE = eINSTANCE.getContainer_Image();
+
+    /**
      * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.MetriceImpl <em>Metrice</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -763,14 +1054,14 @@ public interface DeploymentPackage extends EPackage
     EAttribute METRICE__LIMIT = eINSTANCE.getMetrice_Limit();
 
     /**
-     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.ContainerImpl <em>Container</em>}' class.
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.PortImpl <em>Port</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see co7217.dsl.k8s.deployment.impl.ContainerImpl
-     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getContainer()
+     * @see co7217.dsl.k8s.deployment.impl.PortImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getPort()
      * @generated
      */
-    EClass CONTAINER = eINSTANCE.getContainer();
+    EClass PORT = eINSTANCE.getPort();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -778,15 +1069,31 @@ public interface DeploymentPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONTAINER__NAME = eINSTANCE.getContainer_Name();
+    EAttribute PORT__NAME = eINSTANCE.getPort_Name();
 
     /**
-     * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Protocol</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONTAINER__IMAGE = eINSTANCE.getContainer_Image();
+    EAttribute PORT__PROTOCOL = eINSTANCE.getPort_Protocol();
+
+    /**
+     * The meta object literal for the '<em><b>Inport</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PORT__INPORT = eINSTANCE.getPort_Inport();
+
+    /**
+     * The meta object literal for the '<em><b>Targetport</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PORT__TARGETPORT = eINSTANCE.getPort_Targetport();
 
     /**
      * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.DepImpl <em>Dep</em>}' class.
@@ -855,6 +1162,56 @@ public interface DeploymentPackage extends EPackage
      * @generated
      */
     EReference HPA__METRICES = eINSTANCE.getHpa_Metrices();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.SvcImpl <em>Svc</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.SvcImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getSvc()
+     * @generated
+     */
+    EClass SVC = eINSTANCE.getSvc();
+
+    /**
+     * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SVC__PORTS = eINSTANCE.getSvc_Ports();
+
+    /**
+     * The meta object literal for the '<em><b>Target Label</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SVC__TARGET_LABEL = eINSTANCE.getSvc_TargetLabel();
+
+    /**
+     * The meta object literal for the '<em><b>Target Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SVC__TARGET_NAME = eINSTANCE.getSvc_TargetName();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SVC__TYPE = eINSTANCE.getSvc_Type();
+
+    /**
+     * The meta object literal for the '<em><b>IP</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SVC__IP = eINSTANCE.getSvc_IP();
 
   }
 

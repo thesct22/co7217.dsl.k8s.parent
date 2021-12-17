@@ -18,13 +18,19 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Label/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Label/value"/>
     </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Container">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Image"/>
+    </genClasses>
     <genClasses ecoreClass="Deployment.ecore#//Metrice">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Metrice/resource"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Metrice/limit"/>
     </genClasses>
-    <genClasses ecoreClass="Deployment.ecore#//Container">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Image"/>
+    <genClasses ecoreClass="Deployment.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Port/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Port/Protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Port/inport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Port/targetport"/>
     </genClasses>
     <genClasses ecoreClass="Deployment.ecore#//Dep">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Dep/Replicas"/>
@@ -35,6 +41,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Hpa/Minimum"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Hpa/Maximum"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Hpa/Metrices"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Svc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Svc/Ports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Svc/TargetLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Svc/TargetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Svc/Type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Svc/IP"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

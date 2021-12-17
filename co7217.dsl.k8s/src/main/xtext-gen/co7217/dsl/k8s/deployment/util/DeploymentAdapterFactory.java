@@ -91,14 +91,19 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
         return createLabelAdapter();
       }
       @Override
+      public Adapter caseContainer(Container object)
+      {
+        return createContainerAdapter();
+      }
+      @Override
       public Adapter caseMetrice(Metrice object)
       {
         return createMetriceAdapter();
       }
       @Override
-      public Adapter caseContainer(Container object)
+      public Adapter casePort(Port object)
       {
-        return createContainerAdapter();
+        return createPortAdapter();
       }
       @Override
       public Adapter caseDep(Dep object)
@@ -109,6 +114,11 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
       public Adapter caseHpa(Hpa object)
       {
         return createHpaAdapter();
+      }
+      @Override
+      public Adapter caseSvc(Svc object)
+      {
+        return createSvcAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -178,6 +188,21 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Container
+   * @generated
+   */
+  public Adapter createContainerAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Metrice <em>Metrice</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -193,16 +218,16 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Port <em>Port</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see co7217.dsl.k8s.deployment.Container
+   * @see co7217.dsl.k8s.deployment.Port
    * @generated
    */
-  public Adapter createContainerAdapter()
+  public Adapter createPortAdapter()
   {
     return null;
   }
@@ -233,6 +258,21 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createHpaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Svc <em>Svc</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Svc
+   * @generated
+   */
+  public Adapter createSvcAdapter()
   {
     return null;
   }
