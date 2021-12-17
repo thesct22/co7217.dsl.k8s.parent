@@ -4,7 +4,6 @@
 package co7217.dsl.k8s.deployment.impl;
 
 import co7217.dsl.k8s.deployment.DeploymentPackage;
-import co7217.dsl.k8s.deployment.Greeting;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,18 +14,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Greeting</b></em>'.
+ * An implementation of the model object '<em><b>Container</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link co7217.dsl.k8s.deployment.impl.GreetingImpl#getName <em>Name</em>}</li>
+ *   <li>{@link co7217.dsl.k8s.deployment.impl.ContainerImpl#getName <em>Name</em>}</li>
+ *   <li>{@link co7217.dsl.k8s.deployment.impl.ContainerImpl#getImage <em>Image</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeting
+public class ContainerImpl extends MinimalEObjectImpl.Container implements co7217.dsl.k8s.deployment.Container
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -49,11 +49,31 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getImage() <em>Image</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImage()
+   * @generated
+   * @ordered
+   */
+  protected static final String IMAGE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImage() <em>Image</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImage()
+   * @generated
+   * @ordered
+   */
+  protected String image = IMAGE_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GreetingImpl()
+  protected ContainerImpl()
   {
     super();
   }
@@ -66,7 +86,7 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   @Override
   protected EClass eStaticClass()
   {
-    return DeploymentPackage.Literals.GREETING;
+    return DeploymentPackage.Literals.CONTAINER;
   }
 
   /**
@@ -91,7 +111,32 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.GREETING__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.CONTAINER__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getImage()
+  {
+    return image;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setImage(String newImage)
+  {
+    String oldImage = image;
+    image = newImage;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.CONTAINER__IMAGE, oldImage, image));
   }
 
   /**
@@ -104,8 +149,10 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case DeploymentPackage.GREETING__NAME:
+      case DeploymentPackage.CONTAINER__NAME:
         return getName();
+      case DeploymentPackage.CONTAINER__IMAGE:
+        return getImage();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +167,11 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case DeploymentPackage.GREETING__NAME:
+      case DeploymentPackage.CONTAINER__NAME:
         setName((String)newValue);
+        return;
+      case DeploymentPackage.CONTAINER__IMAGE:
+        setImage((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +187,11 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case DeploymentPackage.GREETING__NAME:
+      case DeploymentPackage.CONTAINER__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case DeploymentPackage.CONTAINER__IMAGE:
+        setImage(IMAGE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +207,10 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case DeploymentPackage.GREETING__NAME:
+      case DeploymentPackage.CONTAINER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DeploymentPackage.CONTAINER__IMAGE:
+        return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +226,12 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
+    result.append(" (Name: ");
     result.append(name);
+    result.append(", Image: ");
+    result.append(image);
     result.append(')');
     return result.toString();
   }
 
-} //GreetingImpl
+} //ContainerImpl

@@ -78,33 +78,33 @@ ruleModel returns [EObject current=null]
 	(
 		(
 			{
-				newCompositeNode(grammarAccess.getModelAccess().getGreetingsGreetingParserRuleCall_0());
+				newCompositeNode(grammarAccess.getModelAccess().getHeadersHeaderParserRuleCall_0());
 			}
-			lv_greetings_0_0=ruleGreeting
+			lv_Headers_0_0=ruleHeader
 			{
 				if ($current==null) {
 					$current = createModelElementForParent(grammarAccess.getModelRule());
 				}
 				add(
 					$current,
-					"greetings",
-					lv_greetings_0_0,
-					"co7217.dsl.k8s.Deployment.Greeting");
+					"Headers",
+					lv_Headers_0_0,
+					"co7217.dsl.k8s.Deployment.Header");
 				afterParserOrEnumRuleCall();
 			}
 		)
 	)*
 ;
 
-// Entry rule entryRuleGreeting
-entryRuleGreeting returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getGreetingRule()); }
-	iv_ruleGreeting=ruleGreeting
-	{ $current=$iv_ruleGreeting.current; }
+// Entry rule entryRuleHeader
+entryRuleHeader returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getHeaderRule()); }
+	iv_ruleHeader=ruleHeader
+	{ $current=$iv_ruleHeader.current; }
 	EOF;
 
-// Rule Greeting
-ruleGreeting returns [EObject current=null]
+// Rule Header
+ruleHeader returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -112,31 +112,800 @@ ruleGreeting returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Hello'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getGreetingAccess().getHelloKeyword_0());
+			newCompositeNode(grammarAccess.getHeaderAccess().getHpaParserRuleCall_0());
 		}
+		this_Hpa_0=ruleHpa
+		{
+			$current = $this_Hpa_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getHeaderAccess().getDepParserRuleCall_1());
+		}
+		this_Dep_1=ruleDep
+		{
+			$current = $this_Dep_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleLabel
+entryRuleLabel returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLabelRule()); }
+	iv_ruleLabel=ruleLabel
+	{ $current=$iv_ruleLabel.current; }
+	EOF;
+
+// Rule Label
+ruleLabel returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_0_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_0_0, grammarAccess.getLabelAccess().getNameIDTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGreetingRule());
+						$current = createModelElement(grammarAccess.getLabelRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_0_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_2='!'
+		otherlv_1='='
 		{
-			newLeafNode(otherlv_2, grammarAccess.getGreetingAccess().getExclamationMarkKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getLabelAccess().getEqualsSignKeyword_1());
+		}
+		(
+			(
+				lv_value_2_0=RULE_STRING
+				{
+					newLeafNode(lv_value_2_0, grammarAccess.getLabelAccess().getValueSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getLabelRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleMetrice
+entryRuleMetrice returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMetriceRule()); }
+	iv_ruleMetrice=ruleMetrice
+	{ $current=$iv_ruleMetrice.current; }
+	EOF;
+
+// Rule Metrice
+ruleMetrice returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMetriceAccess().getResourceResourceParserRuleCall_0_0());
+				}
+				lv_resource_0_0=ruleResource
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMetriceRule());
+					}
+					set(
+						$current,
+						"resource",
+						lv_resource_0_0,
+						"co7217.dsl.k8s.Deployment.Resource");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='='
+		{
+			newLeafNode(otherlv_1, grammarAccess.getMetriceAccess().getEqualsSignKeyword_1());
+		}
+		(
+			(
+				lv_limit_2_0=RULE_INT
+				{
+					newLeafNode(lv_limit_2_0, grammarAccess.getMetriceAccess().getLimitINTTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMetriceRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"limit",
+						lv_limit_2_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleResource
+entryRuleResource returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getResourceRule()); }
+	iv_ruleResource=ruleResource
+	{ $current=$iv_ruleResource.current.getText(); }
+	EOF;
+
+// Rule Resource
+ruleResource returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='memory'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getResourceAccess().getMemoryKeyword_0());
+		}
+		    |
+		kw='cpu'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getResourceAccess().getCpuKeyword_1());
+		}
+	)
+;
+
+// Entry rule entryRuleContainer
+entryRuleContainer returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getContainerRule()); }
+	iv_ruleContainer=ruleContainer
+	{ $current=$iv_ruleContainer.current; }
+	EOF;
+
+// Rule Container
+ruleContainer returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='container'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getContainerAccess().getContainerKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getContainerAccess().getLeftCurlyBracketKeyword_1());
+		}
+		otherlv_2='name'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getContainerAccess().getNameKeyword_2());
+		}
+		otherlv_3='='
+		{
+			newLeafNode(otherlv_3, grammarAccess.getContainerAccess().getEqualsSignKeyword_3());
+		}
+		(
+			(
+				lv_Name_4_0=RULE_STRING
+				{
+					newLeafNode(lv_Name_4_0, grammarAccess.getContainerAccess().getNameSTRINGTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getContainerRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Name",
+						lv_Name_4_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_5=','
+		{
+			newLeafNode(otherlv_5, grammarAccess.getContainerAccess().getCommaKeyword_5());
+		}
+		otherlv_6='image'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getContainerAccess().getImageKeyword_6());
+		}
+		otherlv_7='='
+		{
+			newLeafNode(otherlv_7, grammarAccess.getContainerAccess().getEqualsSignKeyword_7());
+		}
+		(
+			(
+				lv_Image_8_0=RULE_STRING
+				{
+					newLeafNode(lv_Image_8_0, grammarAccess.getContainerAccess().getImageSTRINGTerminalRuleCall_8_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getContainerRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Image",
+						lv_Image_8_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_9='}'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getContainerAccess().getRightCurlyBracketKeyword_9());
+		}
+	)
+;
+
+// Entry rule entryRuleDep
+entryRuleDep returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDepRule()); }
+	iv_ruleDep=ruleDep
+	{ $current=$iv_ruleDep.current; }
+	EOF;
+
+// Rule Dep
+ruleDep returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='---'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getDepAccess().getHyphenMinusHyphenMinusHyphenMinusKeyword_0());
+		}
+		otherlv_1='deployment'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDepAccess().getDeploymentKeyword_1());
+		}
+		otherlv_2='---'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDepAccess().getHyphenMinusHyphenMinusHyphenMinusKeyword_2());
+		}
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getDepAccess().getLeftCurlyBracketKeyword_3());
+		}
+		otherlv_4='name'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDepAccess().getNameKeyword_4());
+		}
+		otherlv_5='='
+		{
+			newLeafNode(otherlv_5, grammarAccess.getDepAccess().getEqualsSignKeyword_5());
+		}
+		(
+			(
+				lv_Name_6_0=RULE_STRING
+				{
+					newLeafNode(lv_Name_6_0, grammarAccess.getDepAccess().getNameSTRINGTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDepRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Name",
+						lv_Name_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_7=','
+		{
+			newLeafNode(otherlv_7, grammarAccess.getDepAccess().getCommaKeyword_7());
+		}
+		(
+			otherlv_8='namespace'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getDepAccess().getNamespaceKeyword_8_0());
+			}
+			otherlv_9='='
+			{
+				newLeafNode(otherlv_9, grammarAccess.getDepAccess().getEqualsSignKeyword_8_1());
+			}
+			(
+				(
+					lv_Namespace_10_0=RULE_STRING
+					{
+						newLeafNode(lv_Namespace_10_0, grammarAccess.getDepAccess().getNamespaceSTRINGTerminalRuleCall_8_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDepRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"Namespace",
+							lv_Namespace_10_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+			otherlv_11=','
+			{
+				newLeafNode(otherlv_11, grammarAccess.getDepAccess().getCommaKeyword_8_3());
+			}
+		)?
+		otherlv_12='label'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getDepAccess().getLabelKeyword_9());
+		}
+		otherlv_13='{'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getDepAccess().getLeftCurlyBracketKeyword_10());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDepAccess().getLabelsLabelParserRuleCall_11_0());
+				}
+				lv_Labels_14_0=ruleLabel
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDepRule());
+					}
+					add(
+						$current,
+						"Labels",
+						lv_Labels_14_0,
+						"co7217.dsl.k8s.Deployment.Label");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_15=','
+			{
+				newLeafNode(otherlv_15, grammarAccess.getDepAccess().getCommaKeyword_12_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDepAccess().getLabelsLabelParserRuleCall_12_1_0());
+					}
+					lv_Labels_16_0=ruleLabel
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDepRule());
+						}
+						add(
+							$current,
+							"Labels",
+							lv_Labels_16_0,
+							"co7217.dsl.k8s.Deployment.Label");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_17='}'
+		{
+			newLeafNode(otherlv_17, grammarAccess.getDepAccess().getRightCurlyBracketKeyword_13());
+		}
+		otherlv_18=','
+		{
+			newLeafNode(otherlv_18, grammarAccess.getDepAccess().getCommaKeyword_14());
+		}
+		otherlv_19='replicas'
+		{
+			newLeafNode(otherlv_19, grammarAccess.getDepAccess().getReplicasKeyword_15());
+		}
+		otherlv_20='='
+		{
+			newLeafNode(otherlv_20, grammarAccess.getDepAccess().getEqualsSignKeyword_16());
+		}
+		(
+			(
+				lv_Replicas_21_0=RULE_INT
+				{
+					newLeafNode(lv_Replicas_21_0, grammarAccess.getDepAccess().getReplicasINTTerminalRuleCall_17_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDepRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Replicas",
+						lv_Replicas_21_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_22=','
+		{
+			newLeafNode(otherlv_22, grammarAccess.getDepAccess().getCommaKeyword_18());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDepAccess().getContainersContainerParserRuleCall_19_0());
+				}
+				lv_Containers_23_0=ruleContainer
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDepRule());
+					}
+					add(
+						$current,
+						"Containers",
+						lv_Containers_23_0,
+						"co7217.dsl.k8s.Deployment.Container");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_24=','
+			{
+				newLeafNode(otherlv_24, grammarAccess.getDepAccess().getCommaKeyword_20_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDepAccess().getContainersContainerParserRuleCall_20_1_0());
+					}
+					lv_Containers_25_0=ruleContainer
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDepRule());
+						}
+						add(
+							$current,
+							"Containers",
+							lv_Containers_25_0,
+							"co7217.dsl.k8s.Deployment.Container");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_26='}'
+		{
+			newLeafNode(otherlv_26, grammarAccess.getDepAccess().getRightCurlyBracketKeyword_21());
+		}
+	)
+;
+
+// Entry rule entryRuleHpa
+entryRuleHpa returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getHpaRule()); }
+	iv_ruleHpa=ruleHpa
+	{ $current=$iv_ruleHpa.current; }
+	EOF;
+
+// Rule Hpa
+ruleHpa returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='---'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getHpaAccess().getHyphenMinusHyphenMinusHyphenMinusKeyword_0());
+		}
+		otherlv_1='hpa'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getHpaAccess().getHpaKeyword_1());
+		}
+		otherlv_2='---'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getHpaAccess().getHyphenMinusHyphenMinusHyphenMinusKeyword_2());
+		}
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getHpaAccess().getLeftCurlyBracketKeyword_3());
+		}
+		otherlv_4='name'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getHpaAccess().getNameKeyword_4());
+		}
+		otherlv_5='='
+		{
+			newLeafNode(otherlv_5, grammarAccess.getHpaAccess().getEqualsSignKeyword_5());
+		}
+		(
+			(
+				lv_Name_6_0=RULE_STRING
+				{
+					newLeafNode(lv_Name_6_0, grammarAccess.getHpaAccess().getNameSTRINGTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getHpaRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Name",
+						lv_Name_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_7=','
+		{
+			newLeafNode(otherlv_7, grammarAccess.getHpaAccess().getCommaKeyword_7());
+		}
+		(
+			otherlv_8='namespace'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getHpaAccess().getNamespaceKeyword_8_0());
+			}
+			otherlv_9='='
+			{
+				newLeafNode(otherlv_9, grammarAccess.getHpaAccess().getEqualsSignKeyword_8_1());
+			}
+			(
+				(
+					lv_Namespace_10_0=RULE_STRING
+					{
+						newLeafNode(lv_Namespace_10_0, grammarAccess.getHpaAccess().getNamespaceSTRINGTerminalRuleCall_8_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getHpaRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"Namespace",
+							lv_Namespace_10_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+			otherlv_11=','
+			{
+				newLeafNode(otherlv_11, grammarAccess.getHpaAccess().getCommaKeyword_8_3());
+			}
+		)?
+		otherlv_12='label'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getHpaAccess().getLabelKeyword_9());
+		}
+		otherlv_13='{'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getHpaAccess().getLeftCurlyBracketKeyword_10());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getHpaAccess().getLabelsLabelParserRuleCall_11_0());
+				}
+				lv_Labels_14_0=ruleLabel
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getHpaRule());
+					}
+					add(
+						$current,
+						"Labels",
+						lv_Labels_14_0,
+						"co7217.dsl.k8s.Deployment.Label");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_15=','
+			{
+				newLeafNode(otherlv_15, grammarAccess.getHpaAccess().getCommaKeyword_12_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getHpaAccess().getLabelsLabelParserRuleCall_12_1_0());
+					}
+					lv_Labels_16_0=ruleLabel
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getHpaRule());
+						}
+						add(
+							$current,
+							"Labels",
+							lv_Labels_16_0,
+							"co7217.dsl.k8s.Deployment.Label");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_17='}'
+		{
+			newLeafNode(otherlv_17, grammarAccess.getHpaAccess().getRightCurlyBracketKeyword_13());
+		}
+		otherlv_18=','
+		{
+			newLeafNode(otherlv_18, grammarAccess.getHpaAccess().getCommaKeyword_14());
+		}
+		otherlv_19='target'
+		{
+			newLeafNode(otherlv_19, grammarAccess.getHpaAccess().getTargetKeyword_15());
+		}
+		otherlv_20='='
+		{
+			newLeafNode(otherlv_20, grammarAccess.getHpaAccess().getEqualsSignKeyword_16());
+		}
+		(
+			(
+				lv_Target_21_0=RULE_STRING
+				{
+					newLeafNode(lv_Target_21_0, grammarAccess.getHpaAccess().getTargetSTRINGTerminalRuleCall_17_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getHpaRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Target",
+						lv_Target_21_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_22=','
+		{
+			newLeafNode(otherlv_22, grammarAccess.getHpaAccess().getCommaKeyword_18());
+		}
+		otherlv_23='minimum'
+		{
+			newLeafNode(otherlv_23, grammarAccess.getHpaAccess().getMinimumKeyword_19());
+		}
+		otherlv_24='='
+		{
+			newLeafNode(otherlv_24, grammarAccess.getHpaAccess().getEqualsSignKeyword_20());
+		}
+		(
+			(
+				lv_Minimum_25_0=RULE_INT
+				{
+					newLeafNode(lv_Minimum_25_0, grammarAccess.getHpaAccess().getMinimumINTTerminalRuleCall_21_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getHpaRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Minimum",
+						lv_Minimum_25_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_26=','
+		{
+			newLeafNode(otherlv_26, grammarAccess.getHpaAccess().getCommaKeyword_22());
+		}
+		otherlv_27='maximum'
+		{
+			newLeafNode(otherlv_27, grammarAccess.getHpaAccess().getMaximumKeyword_23());
+		}
+		otherlv_28='='
+		{
+			newLeafNode(otherlv_28, grammarAccess.getHpaAccess().getEqualsSignKeyword_24());
+		}
+		(
+			(
+				lv_Maximum_29_0=RULE_INT
+				{
+					newLeafNode(lv_Maximum_29_0, grammarAccess.getHpaAccess().getMaximumINTTerminalRuleCall_25_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getHpaRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"Maximum",
+						lv_Maximum_29_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_30=','
+		{
+			newLeafNode(otherlv_30, grammarAccess.getHpaAccess().getCommaKeyword_26());
+		}
+		otherlv_31='metrices'
+		{
+			newLeafNode(otherlv_31, grammarAccess.getHpaAccess().getMetricesKeyword_27());
+		}
+		otherlv_32='{'
+		{
+			newLeafNode(otherlv_32, grammarAccess.getHpaAccess().getLeftCurlyBracketKeyword_28());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getHpaAccess().getMetricesMetriceParserRuleCall_29_0());
+				}
+				lv_Metrices_33_0=ruleMetrice
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getHpaRule());
+					}
+					add(
+						$current,
+						"Metrices",
+						lv_Metrices_33_0,
+						"co7217.dsl.k8s.Deployment.Metrice");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_34=','
+			{
+				newLeafNode(otherlv_34, grammarAccess.getHpaAccess().getCommaKeyword_30_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getHpaAccess().getMetricesMetriceParserRuleCall_30_1_0());
+					}
+					lv_Metrices_35_0=ruleMetrice
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getHpaRule());
+						}
+						add(
+							$current,
+							"Metrices",
+							lv_Metrices_35_0,
+							"co7217.dsl.k8s.Deployment.Metrice");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		otherlv_36='}'
+		{
+			newLeafNode(otherlv_36, grammarAccess.getHpaAccess().getRightCurlyBracketKeyword_31());
+		}
+		otherlv_37='}'
+		{
+			newLeafNode(otherlv_37, grammarAccess.getHpaAccess().getRightCurlyBracketKeyword_32());
 		}
 	)
 ;

@@ -7,10 +7,34 @@
   <genPackages prefix="Deployment" basePackage="co7217.dsl.k8s" disposableProviderFactory="true"
       fileExtensions="dep" ecorePackage="Deployment.ecore#/">
     <genClasses ecoreClass="Deployment.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Model/greetings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Model/Headers"/>
     </genClasses>
-    <genClasses ecoreClass="Deployment.ecore#//Greeting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Greeting/name"/>
+    <genClasses ecoreClass="Deployment.ecore#//Header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Header/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Header/Namespace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Header/Labels"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Label">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Label/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Label/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Metrice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Metrice/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Metrice/limit"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Container">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Container/Image"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Dep">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Dep/Replicas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Dep/Containers"/>
+    </genClasses>
+    <genClasses ecoreClass="Deployment.ecore#//Hpa">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Hpa/Target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Hpa/Minimum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Deployment.ecore#//Hpa/Maximum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Deployment.ecore#//Hpa/Metrices"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

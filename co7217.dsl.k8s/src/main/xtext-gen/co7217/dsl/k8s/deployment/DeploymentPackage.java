@@ -68,13 +68,13 @@ public interface DeploymentPackage extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Greetings</b></em>' containment reference list.
+   * The feature id for the '<em><b>Headers</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__GREETINGS = 0;
+  int MODEL__HEADERS = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -86,14 +86,14 @@ public interface DeploymentPackage extends EPackage
   int MODEL_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.GreetingImpl <em>Greeting</em>}' class.
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.HeaderImpl <em>Header</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see co7217.dsl.k8s.deployment.impl.GreetingImpl
-   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getGreeting()
+   * @see co7217.dsl.k8s.deployment.impl.HeaderImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getHeader()
    * @generated
    */
-  int GREETING = 1;
+  int HEADER = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -102,16 +102,291 @@ public interface DeploymentPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREETING__NAME = 0;
+  int HEADER__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Greeting</em>' class.
+   * The feature id for the '<em><b>Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GREETING_FEATURE_COUNT = 1;
+  int HEADER__NAMESPACE = 1;
+
+  /**
+   * The feature id for the '<em><b>Labels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HEADER__LABELS = 2;
+
+  /**
+   * The number of structural features of the '<em>Header</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HEADER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.LabelImpl <em>Label</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.LabelImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getLabel()
+   * @generated
+   */
+  int LABEL = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Label</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.MetriceImpl <em>Metrice</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.MetriceImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getMetrice()
+   * @generated
+   */
+  int METRICE = 3;
+
+  /**
+   * The feature id for the '<em><b>Resource</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE__RESOURCE = 0;
+
+  /**
+   * The feature id for the '<em><b>Limit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE__LIMIT = 1;
+
+  /**
+   * The number of structural features of the '<em>Metrice</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METRICE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.ContainerImpl <em>Container</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.ContainerImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getContainer()
+   * @generated
+   */
+  int CONTAINER = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Image</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER__IMAGE = 1;
+
+  /**
+   * The number of structural features of the '<em>Container</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.DepImpl <em>Dep</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.DepImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getDep()
+   * @generated
+   */
+  int DEP = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP__NAME = HEADER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP__NAMESPACE = HEADER__NAMESPACE;
+
+  /**
+   * The feature id for the '<em><b>Labels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP__LABELS = HEADER__LABELS;
+
+  /**
+   * The feature id for the '<em><b>Replicas</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP__REPLICAS = HEADER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Containers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP__CONTAINERS = HEADER_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Dep</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEP_FEATURE_COUNT = HEADER_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link co7217.dsl.k8s.deployment.impl.HpaImpl <em>Hpa</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.dsl.k8s.deployment.impl.HpaImpl
+   * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getHpa()
+   * @generated
+   */
+  int HPA = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__NAME = HEADER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__NAMESPACE = HEADER__NAMESPACE;
+
+  /**
+   * The feature id for the '<em><b>Labels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__LABELS = HEADER__LABELS;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__TARGET = HEADER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Minimum</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__MINIMUM = HEADER_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Maximum</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__MAXIMUM = HEADER_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Metrices</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA__METRICES = HEADER_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Hpa</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HPA_FEATURE_COUNT = HEADER_FEATURE_COUNT + 4;
 
 
   /**
@@ -125,36 +400,240 @@ public interface DeploymentPackage extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Model#getGreetings <em>Greetings</em>}'.
+   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Model#getHeaders <em>Headers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Greetings</em>'.
-   * @see co7217.dsl.k8s.deployment.Model#getGreetings()
+   * @return the meta object for the containment reference list '<em>Headers</em>'.
+   * @see co7217.dsl.k8s.deployment.Model#getHeaders()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Greetings();
+  EReference getModel_Headers();
 
   /**
-   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Greeting <em>Greeting</em>}'.
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Header <em>Header</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Greeting</em>'.
-   * @see co7217.dsl.k8s.deployment.Greeting
+   * @return the meta object for class '<em>Header</em>'.
+   * @see co7217.dsl.k8s.deployment.Header
    * @generated
    */
-  EClass getGreeting();
+  EClass getHeader();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Greeting#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Header#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see co7217.dsl.k8s.deployment.Greeting#getName()
-   * @see #getGreeting()
+   * @see co7217.dsl.k8s.deployment.Header#getName()
+   * @see #getHeader()
    * @generated
    */
-  EAttribute getGreeting_Name();
+  EAttribute getHeader_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Header#getNamespace <em>Namespace</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Namespace</em>'.
+   * @see co7217.dsl.k8s.deployment.Header#getNamespace()
+   * @see #getHeader()
+   * @generated
+   */
+  EAttribute getHeader_Namespace();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Header#getLabels <em>Labels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Labels</em>'.
+   * @see co7217.dsl.k8s.deployment.Header#getLabels()
+   * @see #getHeader()
+   * @generated
+   */
+  EReference getHeader_Labels();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Label <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Label</em>'.
+   * @see co7217.dsl.k8s.deployment.Label
+   * @generated
+   */
+  EClass getLabel();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Label#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see co7217.dsl.k8s.deployment.Label#getName()
+   * @see #getLabel()
+   * @generated
+   */
+  EAttribute getLabel_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Label#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see co7217.dsl.k8s.deployment.Label#getValue()
+   * @see #getLabel()
+   * @generated
+   */
+  EAttribute getLabel_Value();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Metrice <em>Metrice</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Metrice</em>'.
+   * @see co7217.dsl.k8s.deployment.Metrice
+   * @generated
+   */
+  EClass getMetrice();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Metrice#getResource <em>Resource</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Resource</em>'.
+   * @see co7217.dsl.k8s.deployment.Metrice#getResource()
+   * @see #getMetrice()
+   * @generated
+   */
+  EAttribute getMetrice_Resource();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Metrice#getLimit <em>Limit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Limit</em>'.
+   * @see co7217.dsl.k8s.deployment.Metrice#getLimit()
+   * @see #getMetrice()
+   * @generated
+   */
+  EAttribute getMetrice_Limit();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Container</em>'.
+   * @see co7217.dsl.k8s.deployment.Container
+   * @generated
+   */
+  EClass getContainer();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see co7217.dsl.k8s.deployment.Container#getName()
+   * @see #getContainer()
+   * @generated
+   */
+  EAttribute getContainer_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Container#getImage <em>Image</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Image</em>'.
+   * @see co7217.dsl.k8s.deployment.Container#getImage()
+   * @see #getContainer()
+   * @generated
+   */
+  EAttribute getContainer_Image();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Dep <em>Dep</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Dep</em>'.
+   * @see co7217.dsl.k8s.deployment.Dep
+   * @generated
+   */
+  EClass getDep();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Dep#getReplicas <em>Replicas</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Replicas</em>'.
+   * @see co7217.dsl.k8s.deployment.Dep#getReplicas()
+   * @see #getDep()
+   * @generated
+   */
+  EAttribute getDep_Replicas();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Dep#getContainers <em>Containers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Containers</em>'.
+   * @see co7217.dsl.k8s.deployment.Dep#getContainers()
+   * @see #getDep()
+   * @generated
+   */
+  EReference getDep_Containers();
+
+  /**
+   * Returns the meta object for class '{@link co7217.dsl.k8s.deployment.Hpa <em>Hpa</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Hpa</em>'.
+   * @see co7217.dsl.k8s.deployment.Hpa
+   * @generated
+   */
+  EClass getHpa();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Hpa#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target</em>'.
+   * @see co7217.dsl.k8s.deployment.Hpa#getTarget()
+   * @see #getHpa()
+   * @generated
+   */
+  EAttribute getHpa_Target();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Hpa#getMinimum <em>Minimum</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Minimum</em>'.
+   * @see co7217.dsl.k8s.deployment.Hpa#getMinimum()
+   * @see #getHpa()
+   * @generated
+   */
+  EAttribute getHpa_Minimum();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.dsl.k8s.deployment.Hpa#getMaximum <em>Maximum</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Maximum</em>'.
+   * @see co7217.dsl.k8s.deployment.Hpa#getMaximum()
+   * @see #getHpa()
+   * @generated
+   */
+  EAttribute getHpa_Maximum();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link co7217.dsl.k8s.deployment.Hpa#getMetrices <em>Metrices</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metrices</em>'.
+   * @see co7217.dsl.k8s.deployment.Hpa#getMetrices()
+   * @see #getHpa()
+   * @generated
+   */
+  EReference getHpa_Metrices();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -190,22 +669,22 @@ public interface DeploymentPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Greetings</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Headers</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__GREETINGS = eINSTANCE.getModel_Greetings();
+    EReference MODEL__HEADERS = eINSTANCE.getModel_Headers();
 
     /**
-     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.GreetingImpl <em>Greeting</em>}' class.
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.HeaderImpl <em>Header</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see co7217.dsl.k8s.deployment.impl.GreetingImpl
-     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getGreeting()
+     * @see co7217.dsl.k8s.deployment.impl.HeaderImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getHeader()
      * @generated
      */
-    EClass GREETING = eINSTANCE.getGreeting();
+    EClass HEADER = eINSTANCE.getHeader();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -213,7 +692,169 @@ public interface DeploymentPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+    EAttribute HEADER__NAME = eINSTANCE.getHeader_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Namespace</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HEADER__NAMESPACE = eINSTANCE.getHeader_Namespace();
+
+    /**
+     * The meta object literal for the '<em><b>Labels</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference HEADER__LABELS = eINSTANCE.getHeader_Labels();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.LabelImpl <em>Label</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.LabelImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getLabel()
+     * @generated
+     */
+    EClass LABEL = eINSTANCE.getLabel();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL__NAME = eINSTANCE.getLabel_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL__VALUE = eINSTANCE.getLabel_Value();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.MetriceImpl <em>Metrice</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.MetriceImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getMetrice()
+     * @generated
+     */
+    EClass METRICE = eINSTANCE.getMetrice();
+
+    /**
+     * The meta object literal for the '<em><b>Resource</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METRICE__RESOURCE = eINSTANCE.getMetrice_Resource();
+
+    /**
+     * The meta object literal for the '<em><b>Limit</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METRICE__LIMIT = eINSTANCE.getMetrice_Limit();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.ContainerImpl <em>Container</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.ContainerImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getContainer()
+     * @generated
+     */
+    EClass CONTAINER = eINSTANCE.getContainer();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTAINER__NAME = eINSTANCE.getContainer_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTAINER__IMAGE = eINSTANCE.getContainer_Image();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.DepImpl <em>Dep</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.DepImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getDep()
+     * @generated
+     */
+    EClass DEP = eINSTANCE.getDep();
+
+    /**
+     * The meta object literal for the '<em><b>Replicas</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEP__REPLICAS = eINSTANCE.getDep_Replicas();
+
+    /**
+     * The meta object literal for the '<em><b>Containers</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DEP__CONTAINERS = eINSTANCE.getDep_Containers();
+
+    /**
+     * The meta object literal for the '{@link co7217.dsl.k8s.deployment.impl.HpaImpl <em>Hpa</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.dsl.k8s.deployment.impl.HpaImpl
+     * @see co7217.dsl.k8s.deployment.impl.DeploymentPackageImpl#getHpa()
+     * @generated
+     */
+    EClass HPA = eINSTANCE.getHpa();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HPA__TARGET = eINSTANCE.getHpa_Target();
+
+    /**
+     * The meta object literal for the '<em><b>Minimum</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HPA__MINIMUM = eINSTANCE.getHpa_Minimum();
+
+    /**
+     * The meta object literal for the '<em><b>Maximum</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HPA__MAXIMUM = eINSTANCE.getHpa_Maximum();
+
+    /**
+     * The meta object literal for the '<em><b>Metrices</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference HPA__METRICES = eINSTANCE.getHpa_Metrices();
 
   }
 

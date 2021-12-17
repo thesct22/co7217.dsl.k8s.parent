@@ -1,0 +1,17 @@
+---
+hpa
+---
+{
+	name="hpa",
+	namespace ="xyz",
+	label{
+	    app="dsl-example"
+	},
+	target="dsl-example",   
+	minimum=1,
+	maximum=5,
+	metrices{
+	    cpu=80,
+	    memory=50
+	}
+}

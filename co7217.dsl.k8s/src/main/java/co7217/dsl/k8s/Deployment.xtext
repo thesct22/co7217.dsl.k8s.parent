@@ -2,8 +2,76 @@ grammar co7217.dsl.k8s.Deployment with org.eclipse.xtext.common.Terminals
 
 generate deployment "http://www.dsl.co7217/k8s/Deployment"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Model: 
+	(Headers+=Header)*
+;
+
+Header:
+	Hpa|Dep//|Svc
+;
+
+Label:
+	name=ID '=' value=STRING 
+;
+
+Metrice:
+	((resource=Resource) '=' limit=INT)
+;
+
+Resource:
+	'memory' | 'cpu'
+;
+
+Container:
+	'container' '{'
+		'name' '=' Name=STRING ','
+		'image' '=' Image=STRING
+	'}'
+;
+
+
+Dep:
+	'---' 
+	'deployment'
+	'---' 
+'{' 
+	'name' '=' Name=STRING ','
+	('namespace' '=' Namespace=STRING  ',')?
+	'label' 
+		'{'
+			(Labels+=Label)
+			(',' Labels+=Label)*
+	'}' ',' 
+	'replicas' '=' Replicas=INT ','
+	Containers+=Container
+	(',' Containers+=Container)*
+'}'
+;
+
+
+Hpa:
+	'---' 
+	'hpa' 
+	'---' 
+	'{' 
+		'name' '=' Name=STRING ','
+		('namespace' '=' Namespace=STRING  ',')?
+		'label' 
+		'{'
+			(Labels+=Label)
+			(',' Labels+=Label)*
+		'}' ','
+		'target' '=' Target=STRING ','
+		'minimum' '=' Minimum=INT ','
+		'maximum' '=' Maximum=INT ','
+		'metrices'
+		'{'
+			Metrices+=Metrice
+			(',' Metrices+=Metrice)?
+		'}'
+	'}'
+;
+//
+//svc:
+//	
+//;

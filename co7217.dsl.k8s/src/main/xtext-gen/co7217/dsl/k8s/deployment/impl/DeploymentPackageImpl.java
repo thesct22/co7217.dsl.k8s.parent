@@ -3,9 +3,13 @@
  */
 package co7217.dsl.k8s.deployment.impl;
 
+import co7217.dsl.k8s.deployment.Dep;
 import co7217.dsl.k8s.deployment.DeploymentFactory;
 import co7217.dsl.k8s.deployment.DeploymentPackage;
-import co7217.dsl.k8s.deployment.Greeting;
+import co7217.dsl.k8s.deployment.Header;
+import co7217.dsl.k8s.deployment.Hpa;
+import co7217.dsl.k8s.deployment.Label;
+import co7217.dsl.k8s.deployment.Metrice;
 import co7217.dsl.k8s.deployment.Model;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -35,7 +39,42 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass greetingEClass = null;
+  private EClass headerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metriceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass containerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass depEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hpaEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -117,7 +156,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EReference getModel_Greetings()
+  public EReference getModel_Headers()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -128,9 +167,9 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EClass getGreeting()
+  public EClass getHeader()
   {
-    return greetingEClass;
+    return headerEClass;
   }
 
   /**
@@ -139,9 +178,218 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
    * @generated
    */
   @Override
-  public EAttribute getGreeting_Name()
+  public EAttribute getHeader_Name()
   {
-    return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)headerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHeader_Namespace()
+  {
+    return (EAttribute)headerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHeader_Labels()
+  {
+    return (EReference)headerEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLabel()
+  {
+    return labelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLabel_Name()
+  {
+    return (EAttribute)labelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLabel_Value()
+  {
+    return (EAttribute)labelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMetrice()
+  {
+    return metriceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMetrice_Resource()
+  {
+    return (EAttribute)metriceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMetrice_Limit()
+  {
+    return (EAttribute)metriceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getContainer()
+  {
+    return containerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContainer_Name()
+  {
+    return (EAttribute)containerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContainer_Image()
+  {
+    return (EAttribute)containerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDep()
+  {
+    return depEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDep_Replicas()
+  {
+    return (EAttribute)depEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDep_Containers()
+  {
+    return (EReference)depEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getHpa()
+  {
+    return hpaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHpa_Target()
+  {
+    return (EAttribute)hpaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHpa_Minimum()
+  {
+    return (EAttribute)hpaEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHpa_Maximum()
+  {
+    return (EAttribute)hpaEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHpa_Metrices()
+  {
+    return (EReference)hpaEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -176,10 +424,34 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__GREETINGS);
+    createEReference(modelEClass, MODEL__HEADERS);
 
-    greetingEClass = createEClass(GREETING);
-    createEAttribute(greetingEClass, GREETING__NAME);
+    headerEClass = createEClass(HEADER);
+    createEAttribute(headerEClass, HEADER__NAME);
+    createEAttribute(headerEClass, HEADER__NAMESPACE);
+    createEReference(headerEClass, HEADER__LABELS);
+
+    labelEClass = createEClass(LABEL);
+    createEAttribute(labelEClass, LABEL__NAME);
+    createEAttribute(labelEClass, LABEL__VALUE);
+
+    metriceEClass = createEClass(METRICE);
+    createEAttribute(metriceEClass, METRICE__RESOURCE);
+    createEAttribute(metriceEClass, METRICE__LIMIT);
+
+    containerEClass = createEClass(CONTAINER);
+    createEAttribute(containerEClass, CONTAINER__NAME);
+    createEAttribute(containerEClass, CONTAINER__IMAGE);
+
+    depEClass = createEClass(DEP);
+    createEAttribute(depEClass, DEP__REPLICAS);
+    createEReference(depEClass, DEP__CONTAINERS);
+
+    hpaEClass = createEClass(HPA);
+    createEAttribute(hpaEClass, HPA__TARGET);
+    createEAttribute(hpaEClass, HPA__MINIMUM);
+    createEAttribute(hpaEClass, HPA__MAXIMUM);
+    createEReference(hpaEClass, HPA__METRICES);
   }
 
   /**
@@ -211,13 +483,39 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    depEClass.getESuperTypes().add(this.getHeader());
+    hpaEClass.getESuperTypes().add(this.getHeader());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Greetings(), this.getGreeting(), null, "greetings", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Headers(), this.getHeader(), null, "Headers", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(headerEClass, Header.class, "Header", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHeader_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHeader_Namespace(), ecorePackage.getEString(), "Namespace", null, 0, 1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHeader_Labels(), this.getLabel(), null, "Labels", null, 0, -1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLabel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLabel_Value(), ecorePackage.getEString(), "value", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(metriceEClass, Metrice.class, "Metrice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMetrice_Resource(), ecorePackage.getEString(), "resource", null, 0, 1, Metrice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetrice_Limit(), ecorePackage.getEInt(), "limit", null, 0, 1, Metrice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(containerEClass, co7217.dsl.k8s.deployment.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContainer_Name(), ecorePackage.getEString(), "Name", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContainer_Image(), ecorePackage.getEString(), "Image", null, 0, 1, co7217.dsl.k8s.deployment.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(depEClass, Dep.class, "Dep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDep_Replicas(), ecorePackage.getEInt(), "Replicas", null, 0, 1, Dep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDep_Containers(), this.getContainer(), null, "Containers", null, 0, -1, Dep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(hpaEClass, Hpa.class, "Hpa", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHpa_Target(), ecorePackage.getEString(), "Target", null, 0, 1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHpa_Minimum(), ecorePackage.getEInt(), "Minimum", null, 0, 1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHpa_Maximum(), ecorePackage.getEInt(), "Maximum", null, 0, 1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHpa_Metrices(), this.getMetrice(), null, "Metrices", null, 0, -1, Hpa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

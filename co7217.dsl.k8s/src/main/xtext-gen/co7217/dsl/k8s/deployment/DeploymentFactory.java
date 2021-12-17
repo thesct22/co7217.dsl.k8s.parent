@@ -33,13 +33,58 @@ public interface DeploymentFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Header</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Header</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  Header createHeader();
+
+  /**
+   * Returns a new object of class '<em>Label</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Label</em>'.
+   * @generated
+   */
+  Label createLabel();
+
+  /**
+   * Returns a new object of class '<em>Metrice</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Metrice</em>'.
+   * @generated
+   */
+  Metrice createMetrice();
+
+  /**
+   * Returns a new object of class '<em>Container</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Container</em>'.
+   * @generated
+   */
+  Container createContainer();
+
+  /**
+   * Returns a new object of class '<em>Dep</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Dep</em>'.
+   * @generated
+   */
+  Dep createDep();
+
+  /**
+   * Returns a new object of class '<em>Hpa</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Hpa</em>'.
+   * @generated
+   */
+  Hpa createHpa();
 
   /**
    * Returns the package supported by this factory.

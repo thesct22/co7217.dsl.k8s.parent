@@ -66,7 +66,12 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
     switch (eClass.getClassifierID())
     {
       case DeploymentPackage.MODEL: return createModel();
-      case DeploymentPackage.GREETING: return createGreeting();
+      case DeploymentPackage.HEADER: return createHeader();
+      case DeploymentPackage.LABEL: return createLabel();
+      case DeploymentPackage.METRICE: return createMetrice();
+      case DeploymentPackage.CONTAINER: return createContainer();
+      case DeploymentPackage.DEP: return createDep();
+      case DeploymentPackage.HPA: return createHpa();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -90,10 +95,70 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
    * @generated
    */
   @Override
-  public Greeting createGreeting()
+  public Header createHeader()
   {
-    GreetingImpl greeting = new GreetingImpl();
-    return greeting;
+    HeaderImpl header = new HeaderImpl();
+    return header;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Label createLabel()
+  {
+    LabelImpl label = new LabelImpl();
+    return label;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Metrice createMetrice()
+  {
+    MetriceImpl metrice = new MetriceImpl();
+    return metrice;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public co7217.dsl.k8s.deployment.Container createContainer()
+  {
+    ContainerImpl container = new ContainerImpl();
+    return container;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Dep createDep()
+  {
+    DepImpl dep = new DepImpl();
+    return dep;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Hpa createHpa()
+  {
+    HpaImpl hpa = new HpaImpl();
+    return hpa;
   }
 
   /**

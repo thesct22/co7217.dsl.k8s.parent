@@ -81,9 +81,34 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseGreeting(Greeting object)
+      public Adapter caseHeader(Header object)
       {
-        return createGreetingAdapter();
+        return createHeaderAdapter();
+      }
+      @Override
+      public Adapter caseLabel(Label object)
+      {
+        return createLabelAdapter();
+      }
+      @Override
+      public Adapter caseMetrice(Metrice object)
+      {
+        return createMetriceAdapter();
+      }
+      @Override
+      public Adapter caseContainer(Container object)
+      {
+        return createContainerAdapter();
+      }
+      @Override
+      public Adapter caseDep(Dep object)
+      {
+        return createDepAdapter();
+      }
+      @Override
+      public Adapter caseHpa(Hpa object)
+      {
+        return createHpaAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -123,16 +148,91 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Greeting <em>Greeting</em>}'.
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Header <em>Header</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see co7217.dsl.k8s.deployment.Greeting
+   * @see co7217.dsl.k8s.deployment.Header
    * @generated
    */
-  public Adapter createGreetingAdapter()
+  public Adapter createHeaderAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Label <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Label
+   * @generated
+   */
+  public Adapter createLabelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Metrice <em>Metrice</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Metrice
+   * @generated
+   */
+  public Adapter createMetriceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Container <em>Container</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Container
+   * @generated
+   */
+  public Adapter createContainerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Dep <em>Dep</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Dep
+   * @generated
+   */
+  public Adapter createDepAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.dsl.k8s.deployment.Hpa <em>Hpa</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.dsl.k8s.deployment.Hpa
+   * @generated
+   */
+  public Adapter createHpaAdapter()
   {
     return null;
   }

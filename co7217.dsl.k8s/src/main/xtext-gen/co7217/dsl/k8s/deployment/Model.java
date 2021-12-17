@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link co7217.dsl.k8s.deployment.Model#getGreetings <em>Greetings</em>}</li>
+ *   <li>{@link co7217.dsl.k8s.deployment.Model#getHeaders <em>Headers</em>}</li>
  * </ul>
  *
  * @see co7217.dsl.k8s.deployment.DeploymentPackage#getModel()
@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Model extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Greetings</b></em>' containment reference list.
-   * The list contents are of type {@link co7217.dsl.k8s.deployment.Greeting}.
+   * Returns the value of the '<em><b>Headers</b></em>' containment reference list.
+   * The list contents are of type {@link co7217.dsl.k8s.deployment.Header}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Greetings</em>' containment reference list.
-   * @see co7217.dsl.k8s.deployment.DeploymentPackage#getModel_Greetings()
+   * @return the value of the '<em>Headers</em>' containment reference list.
+   * @see co7217.dsl.k8s.deployment.DeploymentPackage#getModel_Headers()
    * @model containment="true"
    * @generated
    */
-  EList<Greeting> getGreetings();
+  EList<Header> getHeaders();
 
 } // Model

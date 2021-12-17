@@ -3,8 +3,12 @@
  */
 package co7217.dsl.k8s.serializer;
 
+import co7217.dsl.k8s.deployment.Container;
+import co7217.dsl.k8s.deployment.Dep;
 import co7217.dsl.k8s.deployment.DeploymentPackage;
-import co7217.dsl.k8s.deployment.Greeting;
+import co7217.dsl.k8s.deployment.Hpa;
+import co7217.dsl.k8s.deployment.Label;
+import co7217.dsl.k8s.deployment.Metrice;
 import co7217.dsl.k8s.deployment.Model;
 import co7217.dsl.k8s.services.DeploymentGrammarAccess;
 import com.google.inject.Inject;
@@ -33,8 +37,20 @@ public class DeploymentSemanticSequencer extends AbstractDelegatingSemanticSeque
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == DeploymentPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case DeploymentPackage.GREETING:
-				sequence_Greeting(context, (Greeting) semanticObject); 
+			case DeploymentPackage.CONTAINER:
+				sequence_Container(context, (Container) semanticObject); 
+				return; 
+			case DeploymentPackage.DEP:
+				sequence_Dep(context, (Dep) semanticObject); 
+				return; 
+			case DeploymentPackage.HPA:
+				sequence_Hpa(context, (Hpa) semanticObject); 
+				return; 
+			case DeploymentPackage.LABEL:
+				sequence_Label(context, (Label) semanticObject); 
+				return; 
+			case DeploymentPackage.METRICE:
+				sequence_Metrice(context, (Metrice) semanticObject); 
 				return; 
 			case DeploymentPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -46,18 +62,107 @@ public class DeploymentSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
-	 *     Greeting returns Greeting
+	 *     Container returns Container
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (Name=STRING Image=STRING)
 	 */
-	protected void sequence_Greeting(ISerializationContext context, Greeting semanticObject) {
+	protected void sequence_Container(ISerializationContext context, Container semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.GREETING__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.GREETING__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.CONTAINER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.CONTAINER__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.CONTAINER__IMAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.CONTAINER__IMAGE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getContainerAccess().getNameSTRINGTerminalRuleCall_4_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getContainerAccess().getImageSTRINGTerminalRuleCall_8_0(), semanticObject.getImage());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Header returns Dep
+	 *     Dep returns Dep
+	 *
+	 * Constraint:
+	 *     (
+	 *         Name=STRING 
+	 *         Namespace=STRING? 
+	 *         Labels+=Label 
+	 *         Labels+=Label* 
+	 *         Replicas=INT 
+	 *         Containers+=Container 
+	 *         Containers+=Container*
+	 *     )
+	 */
+	protected void sequence_Dep(ISerializationContext context, Dep semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Header returns Hpa
+	 *     Hpa returns Hpa
+	 *
+	 * Constraint:
+	 *     (
+	 *         Name=STRING 
+	 *         Namespace=STRING? 
+	 *         Labels+=Label 
+	 *         Labels+=Label* 
+	 *         Target=STRING 
+	 *         Minimum=INT 
+	 *         Maximum=INT 
+	 *         Metrices+=Metrice 
+	 *         Metrices+=Metrice?
+	 *     )
+	 */
+	protected void sequence_Hpa(ISerializationContext context, Hpa semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Label returns Label
+	 *
+	 * Constraint:
+	 *     (name=ID value=STRING)
+	 */
+	protected void sequence_Label(ISerializationContext context, Label semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.LABEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.LABEL__NAME));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.LABEL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.LABEL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLabelAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getLabelAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Metrice returns Metrice
+	 *
+	 * Constraint:
+	 *     (resource=Resource limit=INT)
+	 */
+	protected void sequence_Metrice(ISerializationContext context, Metrice semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.METRICE__RESOURCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.METRICE__RESOURCE));
+			if (transientValues.isValueTransient(semanticObject, DeploymentPackage.Literals.METRICE__LIMIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DeploymentPackage.Literals.METRICE__LIMIT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMetriceAccess().getResourceResourceParserRuleCall_0_0(), semanticObject.getResource());
+		feeder.accept(grammarAccess.getMetriceAccess().getLimitINTTerminalRuleCall_2_0(), semanticObject.getLimit());
 		feeder.finish();
 	}
 	
@@ -67,7 +172,7 @@ public class DeploymentSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     greetings+=Greeting+
+	 *     Headers+=Header+
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

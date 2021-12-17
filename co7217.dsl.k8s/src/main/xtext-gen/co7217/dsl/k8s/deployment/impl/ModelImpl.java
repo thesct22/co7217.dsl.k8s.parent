@@ -4,7 +4,7 @@
 package co7217.dsl.k8s.deployment.impl;
 
 import co7217.dsl.k8s.deployment.DeploymentPackage;
-import co7217.dsl.k8s.deployment.Greeting;
+import co7217.dsl.k8s.deployment.Header;
 import co7217.dsl.k8s.deployment.Model;
 
 import java.util.Collection;
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link co7217.dsl.k8s.deployment.impl.ModelImpl#getGreetings <em>Greetings</em>}</li>
+ *   <li>{@link co7217.dsl.k8s.deployment.impl.ModelImpl#getHeaders <em>Headers</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getGreetings() <em>Greetings</em>}' containment reference list.
+   * The cached value of the '{@link #getHeaders() <em>Headers</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGreetings()
+   * @see #getHeaders()
    * @generated
    * @ordered
    */
-  protected EList<Greeting> greetings;
+  protected EList<Header> headers;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +73,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<Greeting> getGreetings()
+  public EList<Header> getHeaders()
   {
-    if (greetings == null)
+    if (headers == null)
     {
-      greetings = new EObjectContainmentEList<Greeting>(Greeting.class, this, DeploymentPackage.MODEL__GREETINGS);
+      headers = new EObjectContainmentEList<Header>(Header.class, this, DeploymentPackage.MODEL__HEADERS);
     }
-    return greetings;
+    return headers;
   }
 
   /**
@@ -92,8 +92,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case DeploymentPackage.MODEL__GREETINGS:
-        return ((InternalEList<?>)getGreetings()).basicRemove(otherEnd, msgs);
+      case DeploymentPackage.MODEL__HEADERS:
+        return ((InternalEList<?>)getHeaders()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +108,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case DeploymentPackage.MODEL__GREETINGS:
-        return getGreetings();
+      case DeploymentPackage.MODEL__HEADERS:
+        return getHeaders();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +125,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case DeploymentPackage.MODEL__GREETINGS:
-        getGreetings().clear();
-        getGreetings().addAll((Collection<? extends Greeting>)newValue);
+      case DeploymentPackage.MODEL__HEADERS:
+        getHeaders().clear();
+        getHeaders().addAll((Collection<? extends Header>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +143,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case DeploymentPackage.MODEL__GREETINGS:
-        getGreetings().clear();
+      case DeploymentPackage.MODEL__HEADERS:
+        getHeaders().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +160,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case DeploymentPackage.MODEL__GREETINGS:
-        return greetings != null && !greetings.isEmpty();
+      case DeploymentPackage.MODEL__HEADERS:
+        return headers != null && !headers.isEmpty();
     }
     return super.eIsSet(featureID);
   }

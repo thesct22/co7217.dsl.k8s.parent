@@ -6,6 +6,7 @@ package co7217.dsl.k8s.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -23,50 +24,638 @@ public class DeploymentGrammarAccess extends AbstractElementFinder.AbstractGramm
 	
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Model");
-		private final Assignment cGreetingsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cGreetingsGreetingParserRuleCall_0 = (RuleCall)cGreetingsAssignment.eContents().get(0);
+		private final Assignment cHeadersAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cHeadersHeaderParserRuleCall_0 = (RuleCall)cHeadersAssignment.eContents().get(0);
 		
 		//Model:
-		//    greetings+=Greeting*;
+		//    (Headers+=Header)*
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//greetings+=Greeting*
-		public Assignment getGreetingsAssignment() { return cGreetingsAssignment; }
+		//(Headers+=Header)*
+		public Assignment getHeadersAssignment() { return cHeadersAssignment; }
 		
-		//Greeting
-		public RuleCall getGreetingsGreetingParserRuleCall_0() { return cGreetingsGreetingParserRuleCall_0; }
+		//Header
+		public RuleCall getHeadersHeaderParserRuleCall_0() { return cHeadersHeaderParserRuleCall_0; }
 	}
-	public class GreetingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Greeting");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHelloKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_2 = (Keyword)cGroup.eContents().get(2);
+	public class HeaderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Header");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cHpaParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDepParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Greeting:
-		//    'Hello' name=ID '!';
+		//Header:
+		//    Hpa|Dep//|Svc
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Hello' name=ID '!'
+		//Hpa|Dep
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Hpa
+		public RuleCall getHpaParserRuleCall_0() { return cHpaParserRuleCall_0; }
+		
+		//Dep
+		public RuleCall getDepParserRuleCall_1() { return cDepParserRuleCall_1; }
+	}
+	public class LabelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Label");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//Label:
+		//    name=ID '=' value=STRING
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID '=' value=STRING
 		public Group getGroup() { return cGroup; }
 		
-		//'Hello'
-		public Keyword getHelloKeyword_0() { return cHelloKeyword_0; }
-		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
 		
-		//'!'
-		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
+		//'='
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+	}
+	public class MetriceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Metrice");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cResourceAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cResourceResourceParserRuleCall_0_0 = (RuleCall)cResourceAssignment_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLimitAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLimitINTTerminalRuleCall_2_0 = (RuleCall)cLimitAssignment_2.eContents().get(0);
+		
+		//Metrice:
+		//    ((resource=Resource) '=' limit=INT)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//((resource=Resource) '=' limit=INT)
+		public Group getGroup() { return cGroup; }
+		
+		//(resource=Resource)
+		public Assignment getResourceAssignment_0() { return cResourceAssignment_0; }
+		
+		//Resource
+		public RuleCall getResourceResourceParserRuleCall_0_0() { return cResourceResourceParserRuleCall_0_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		
+		//limit=INT
+		public Assignment getLimitAssignment_2() { return cLimitAssignment_2; }
+		
+		//INT
+		public RuleCall getLimitINTTerminalRuleCall_2_0() { return cLimitINTTerminalRuleCall_2_0; }
+	}
+	public class ResourceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Resource");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cMemoryKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cCpuKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//Resource:
+		//    'memory' | 'cpu'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'memory' | 'cpu'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'memory'
+		public Keyword getMemoryKeyword_0() { return cMemoryKeyword_0; }
+		
+		//'cpu'
+		public Keyword getCpuKeyword_1() { return cCpuKeyword_1; }
+	}
+	public class ContainerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Container");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cContainerKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cImageKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cImageAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cImageSTRINGTerminalRuleCall_8_0 = (RuleCall)cImageAssignment_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//Container:
+		//    'container' '{'
+		//        'name' '=' Name=STRING ','
+		//        'image' '=' Image=STRING
+		//    '}'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'container' '{'
+		//    'name' '=' Name=STRING ','
+		//    'image' '=' Image=STRING
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'container'
+		public Keyword getContainerKeyword_0() { return cContainerKeyword_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//'name'
+		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+		
+		//Name=STRING
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_4_0() { return cNameSTRINGTerminalRuleCall_4_0; }
+		
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		
+		//'image'
+		public Keyword getImageKeyword_6() { return cImageKeyword_6; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
+		
+		//Image=STRING
+		public Assignment getImageAssignment_8() { return cImageAssignment_8; }
+		
+		//STRING
+		public RuleCall getImageSTRINGTerminalRuleCall_8_0() { return cImageSTRINGTerminalRuleCall_8_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+	}
+	public class DepElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Dep");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusHyphenMinusHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDeploymentKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cHyphenMinusHyphenMinusHyphenMinusKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cNameKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cEqualsSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cNamespaceKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cNamespaceAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cNamespaceSTRINGTerminalRuleCall_8_2_0 = (RuleCall)cNamespaceAssignment_8_2.eContents().get(0);
+		private final Keyword cCommaKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Keyword cLabelKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cLeftCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cLabelsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cLabelsLabelParserRuleCall_11_0 = (RuleCall)cLabelsAssignment_11.eContents().get(0);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cCommaKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cLabelsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cLabelsLabelParserRuleCall_12_1_0 = (RuleCall)cLabelsAssignment_12_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cCommaKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cReplicasKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Keyword cEqualsSignKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cReplicasAssignment_17 = (Assignment)cGroup.eContents().get(17);
+		private final RuleCall cReplicasINTTerminalRuleCall_17_0 = (RuleCall)cReplicasAssignment_17.eContents().get(0);
+		private final Keyword cCommaKeyword_18 = (Keyword)cGroup.eContents().get(18);
+		private final Assignment cContainersAssignment_19 = (Assignment)cGroup.eContents().get(19);
+		private final RuleCall cContainersContainerParserRuleCall_19_0 = (RuleCall)cContainersAssignment_19.eContents().get(0);
+		private final Group cGroup_20 = (Group)cGroup.eContents().get(20);
+		private final Keyword cCommaKeyword_20_0 = (Keyword)cGroup_20.eContents().get(0);
+		private final Assignment cContainersAssignment_20_1 = (Assignment)cGroup_20.eContents().get(1);
+		private final RuleCall cContainersContainerParserRuleCall_20_1_0 = (RuleCall)cContainersAssignment_20_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_21 = (Keyword)cGroup.eContents().get(21);
+		
+		//Dep:
+		//    '---'
+		//    'deployment'
+		//    '---'
+		//'{'
+		//    'name' '=' Name=STRING ','
+		//    ('namespace' '=' Namespace=STRING  ',')?
+		//    'label'
+		//        '{'
+		//            (Labels+=Label)
+		//            (',' Labels+=Label)*
+		//    '}' ','
+		//    'replicas' '=' Replicas=INT ','
+		//    Containers+=Container
+		//    (',' Containers+=Container)*
+		//'}'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//    '---'
+		//    'deployment'
+		//    '---'
+		//'{'
+		//    'name' '=' Name=STRING ','
+		//    ('namespace' '=' Namespace=STRING  ',')?
+		//    'label'
+		//        '{'
+		//            (Labels+=Label)
+		//            (',' Labels+=Label)*
+		//    '}' ','
+		//    'replicas' '=' Replicas=INT ','
+		//    Containers+=Container
+		//    (',' Containers+=Container)*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'---'
+		public Keyword getHyphenMinusHyphenMinusHyphenMinusKeyword_0() { return cHyphenMinusHyphenMinusHyphenMinusKeyword_0; }
+		
+		//'deployment'
+		public Keyword getDeploymentKeyword_1() { return cDeploymentKeyword_1; }
+		
+		//'---'
+		public Keyword getHyphenMinusHyphenMinusHyphenMinusKeyword_2() { return cHyphenMinusHyphenMinusHyphenMinusKeyword_2; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//'name'
+		public Keyword getNameKeyword_4() { return cNameKeyword_4; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_5() { return cEqualsSignKeyword_5; }
+		
+		//Name=STRING
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
+		
+		//','
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		
+		//('namespace' '=' Namespace=STRING  ',')?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//'namespace'
+		public Keyword getNamespaceKeyword_8_0() { return cNamespaceKeyword_8_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
+		
+		//Namespace=STRING
+		public Assignment getNamespaceAssignment_8_2() { return cNamespaceAssignment_8_2; }
+		
+		//STRING
+		public RuleCall getNamespaceSTRINGTerminalRuleCall_8_2_0() { return cNamespaceSTRINGTerminalRuleCall_8_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_8_3() { return cCommaKeyword_8_3; }
+		
+		//'label'
+		public Keyword getLabelKeyword_9() { return cLabelKeyword_9; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_10() { return cLeftCurlyBracketKeyword_10; }
+		
+		//(Labels+=Label)
+		public Assignment getLabelsAssignment_11() { return cLabelsAssignment_11; }
+		
+		//Label
+		public RuleCall getLabelsLabelParserRuleCall_11_0() { return cLabelsLabelParserRuleCall_11_0; }
+		
+		//(',' Labels+=Label)*
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//','
+		public Keyword getCommaKeyword_12_0() { return cCommaKeyword_12_0; }
+		
+		//Labels+=Label
+		public Assignment getLabelsAssignment_12_1() { return cLabelsAssignment_12_1; }
+		
+		//Label
+		public RuleCall getLabelsLabelParserRuleCall_12_1_0() { return cLabelsLabelParserRuleCall_12_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		
+		//','
+		public Keyword getCommaKeyword_14() { return cCommaKeyword_14; }
+		
+		//'replicas'
+		public Keyword getReplicasKeyword_15() { return cReplicasKeyword_15; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_16() { return cEqualsSignKeyword_16; }
+		
+		//Replicas=INT
+		public Assignment getReplicasAssignment_17() { return cReplicasAssignment_17; }
+		
+		//INT
+		public RuleCall getReplicasINTTerminalRuleCall_17_0() { return cReplicasINTTerminalRuleCall_17_0; }
+		
+		//','
+		public Keyword getCommaKeyword_18() { return cCommaKeyword_18; }
+		
+		//Containers+=Container
+		public Assignment getContainersAssignment_19() { return cContainersAssignment_19; }
+		
+		//Container
+		public RuleCall getContainersContainerParserRuleCall_19_0() { return cContainersContainerParserRuleCall_19_0; }
+		
+		//(',' Containers+=Container)*
+		public Group getGroup_20() { return cGroup_20; }
+		
+		//','
+		public Keyword getCommaKeyword_20_0() { return cCommaKeyword_20_0; }
+		
+		//Containers+=Container
+		public Assignment getContainersAssignment_20_1() { return cContainersAssignment_20_1; }
+		
+		//Container
+		public RuleCall getContainersContainerParserRuleCall_20_1_0() { return cContainersContainerParserRuleCall_20_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_21() { return cRightCurlyBracketKeyword_21; }
+	}
+	public class HpaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.dsl.k8s.Deployment.Hpa");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusHyphenMinusHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cHpaKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cHyphenMinusHyphenMinusHyphenMinusKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cNameKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cEqualsSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cNamespaceKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cNamespaceAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cNamespaceSTRINGTerminalRuleCall_8_2_0 = (RuleCall)cNamespaceAssignment_8_2.eContents().get(0);
+		private final Keyword cCommaKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Keyword cLabelKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cLeftCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cLabelsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cLabelsLabelParserRuleCall_11_0 = (RuleCall)cLabelsAssignment_11.eContents().get(0);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cCommaKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cLabelsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cLabelsLabelParserRuleCall_12_1_0 = (RuleCall)cLabelsAssignment_12_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cCommaKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cTargetKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Keyword cEqualsSignKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cTargetAssignment_17 = (Assignment)cGroup.eContents().get(17);
+		private final RuleCall cTargetSTRINGTerminalRuleCall_17_0 = (RuleCall)cTargetAssignment_17.eContents().get(0);
+		private final Keyword cCommaKeyword_18 = (Keyword)cGroup.eContents().get(18);
+		private final Keyword cMinimumKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Keyword cEqualsSignKeyword_20 = (Keyword)cGroup.eContents().get(20);
+		private final Assignment cMinimumAssignment_21 = (Assignment)cGroup.eContents().get(21);
+		private final RuleCall cMinimumINTTerminalRuleCall_21_0 = (RuleCall)cMinimumAssignment_21.eContents().get(0);
+		private final Keyword cCommaKeyword_22 = (Keyword)cGroup.eContents().get(22);
+		private final Keyword cMaximumKeyword_23 = (Keyword)cGroup.eContents().get(23);
+		private final Keyword cEqualsSignKeyword_24 = (Keyword)cGroup.eContents().get(24);
+		private final Assignment cMaximumAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final RuleCall cMaximumINTTerminalRuleCall_25_0 = (RuleCall)cMaximumAssignment_25.eContents().get(0);
+		private final Keyword cCommaKeyword_26 = (Keyword)cGroup.eContents().get(26);
+		private final Keyword cMetricesKeyword_27 = (Keyword)cGroup.eContents().get(27);
+		private final Keyword cLeftCurlyBracketKeyword_28 = (Keyword)cGroup.eContents().get(28);
+		private final Assignment cMetricesAssignment_29 = (Assignment)cGroup.eContents().get(29);
+		private final RuleCall cMetricesMetriceParserRuleCall_29_0 = (RuleCall)cMetricesAssignment_29.eContents().get(0);
+		private final Group cGroup_30 = (Group)cGroup.eContents().get(30);
+		private final Keyword cCommaKeyword_30_0 = (Keyword)cGroup_30.eContents().get(0);
+		private final Assignment cMetricesAssignment_30_1 = (Assignment)cGroup_30.eContents().get(1);
+		private final RuleCall cMetricesMetriceParserRuleCall_30_1_0 = (RuleCall)cMetricesAssignment_30_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_31 = (Keyword)cGroup.eContents().get(31);
+		private final Keyword cRightCurlyBracketKeyword_32 = (Keyword)cGroup.eContents().get(32);
+		
+		//Hpa:
+		//    '---'
+		//    'hpa'
+		//    '---'
+		//    '{'
+		//        'name' '=' Name=STRING ','
+		//        ('namespace' '=' Namespace=STRING  ',')?
+		//        'label'
+		//        '{'
+		//            (Labels+=Label)
+		//            (',' Labels+=Label)*
+		//        '}' ','
+		//        'target' '=' Target=STRING ','
+		//        'minimum' '=' Minimum=INT ','
+		//        'maximum' '=' Maximum=INT ','
+		//        'metrices'
+		//        '{'
+		//            Metrices+=Metrice
+		//            (',' Metrices+=Metrice)?
+		//        '}'
+		//    '}'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'---'
+		//'hpa'
+		//'---'
+		//'{'
+		//    'name' '=' Name=STRING ','
+		//    ('namespace' '=' Namespace=STRING  ',')?
+		//    'label'
+		//    '{'
+		//        (Labels+=Label)
+		//        (',' Labels+=Label)*
+		//    '}' ','
+		//    'target' '=' Target=STRING ','
+		//    'minimum' '=' Minimum=INT ','
+		//    'maximum' '=' Maximum=INT ','
+		//    'metrices'
+		//    '{'
+		//        Metrices+=Metrice
+		//        (',' Metrices+=Metrice)?
+		//    '}'
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'---'
+		public Keyword getHyphenMinusHyphenMinusHyphenMinusKeyword_0() { return cHyphenMinusHyphenMinusHyphenMinusKeyword_0; }
+		
+		//'hpa'
+		public Keyword getHpaKeyword_1() { return cHpaKeyword_1; }
+		
+		//'---'
+		public Keyword getHyphenMinusHyphenMinusHyphenMinusKeyword_2() { return cHyphenMinusHyphenMinusHyphenMinusKeyword_2; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//'name'
+		public Keyword getNameKeyword_4() { return cNameKeyword_4; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_5() { return cEqualsSignKeyword_5; }
+		
+		//Name=STRING
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
+		
+		//','
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		
+		//('namespace' '=' Namespace=STRING  ',')?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//'namespace'
+		public Keyword getNamespaceKeyword_8_0() { return cNamespaceKeyword_8_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
+		
+		//Namespace=STRING
+		public Assignment getNamespaceAssignment_8_2() { return cNamespaceAssignment_8_2; }
+		
+		//STRING
+		public RuleCall getNamespaceSTRINGTerminalRuleCall_8_2_0() { return cNamespaceSTRINGTerminalRuleCall_8_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_8_3() { return cCommaKeyword_8_3; }
+		
+		//'label'
+		public Keyword getLabelKeyword_9() { return cLabelKeyword_9; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_10() { return cLeftCurlyBracketKeyword_10; }
+		
+		//(Labels+=Label)
+		public Assignment getLabelsAssignment_11() { return cLabelsAssignment_11; }
+		
+		//Label
+		public RuleCall getLabelsLabelParserRuleCall_11_0() { return cLabelsLabelParserRuleCall_11_0; }
+		
+		//(',' Labels+=Label)*
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//','
+		public Keyword getCommaKeyword_12_0() { return cCommaKeyword_12_0; }
+		
+		//Labels+=Label
+		public Assignment getLabelsAssignment_12_1() { return cLabelsAssignment_12_1; }
+		
+		//Label
+		public RuleCall getLabelsLabelParserRuleCall_12_1_0() { return cLabelsLabelParserRuleCall_12_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		
+		//','
+		public Keyword getCommaKeyword_14() { return cCommaKeyword_14; }
+		
+		//'target'
+		public Keyword getTargetKeyword_15() { return cTargetKeyword_15; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_16() { return cEqualsSignKeyword_16; }
+		
+		//Target=STRING
+		public Assignment getTargetAssignment_17() { return cTargetAssignment_17; }
+		
+		//STRING
+		public RuleCall getTargetSTRINGTerminalRuleCall_17_0() { return cTargetSTRINGTerminalRuleCall_17_0; }
+		
+		//','
+		public Keyword getCommaKeyword_18() { return cCommaKeyword_18; }
+		
+		//'minimum'
+		public Keyword getMinimumKeyword_19() { return cMinimumKeyword_19; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_20() { return cEqualsSignKeyword_20; }
+		
+		//Minimum=INT
+		public Assignment getMinimumAssignment_21() { return cMinimumAssignment_21; }
+		
+		//INT
+		public RuleCall getMinimumINTTerminalRuleCall_21_0() { return cMinimumINTTerminalRuleCall_21_0; }
+		
+		//','
+		public Keyword getCommaKeyword_22() { return cCommaKeyword_22; }
+		
+		//'maximum'
+		public Keyword getMaximumKeyword_23() { return cMaximumKeyword_23; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_24() { return cEqualsSignKeyword_24; }
+		
+		//Maximum=INT
+		public Assignment getMaximumAssignment_25() { return cMaximumAssignment_25; }
+		
+		//INT
+		public RuleCall getMaximumINTTerminalRuleCall_25_0() { return cMaximumINTTerminalRuleCall_25_0; }
+		
+		//','
+		public Keyword getCommaKeyword_26() { return cCommaKeyword_26; }
+		
+		//'metrices'
+		public Keyword getMetricesKeyword_27() { return cMetricesKeyword_27; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_28() { return cLeftCurlyBracketKeyword_28; }
+		
+		//Metrices+=Metrice
+		public Assignment getMetricesAssignment_29() { return cMetricesAssignment_29; }
+		
+		//Metrice
+		public RuleCall getMetricesMetriceParserRuleCall_29_0() { return cMetricesMetriceParserRuleCall_29_0; }
+		
+		//(',' Metrices+=Metrice)?
+		public Group getGroup_30() { return cGroup_30; }
+		
+		//','
+		public Keyword getCommaKeyword_30_0() { return cCommaKeyword_30_0; }
+		
+		//Metrices+=Metrice
+		public Assignment getMetricesAssignment_30_1() { return cMetricesAssignment_30_1; }
+		
+		//Metrice
+		public RuleCall getMetricesMetriceParserRuleCall_30_1_0() { return cMetricesMetriceParserRuleCall_30_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_31() { return cRightCurlyBracketKeyword_31; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_32() { return cRightCurlyBracketKeyword_32; }
 	}
 	
 	
 	private final ModelElements pModel;
-	private final GreetingElements pGreeting;
+	private final HeaderElements pHeader;
+	private final LabelElements pLabel;
+	private final MetriceElements pMetrice;
+	private final ResourceElements pResource;
+	private final ContainerElements pContainer;
+	private final DepElements pDep;
+	private final HpaElements pHpa;
 	
 	private final Grammar grammar;
 	
@@ -78,7 +667,13 @@ public class DeploymentGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
-		this.pGreeting = new GreetingElements();
+		this.pHeader = new HeaderElements();
+		this.pLabel = new LabelElements();
+		this.pMetrice = new MetriceElements();
+		this.pResource = new ResourceElements();
+		this.pContainer = new ContainerElements();
+		this.pDep = new DepElements();
+		this.pHpa = new HpaElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -109,7 +704,8 @@ public class DeploymentGrammarAccess extends AbstractElementFinder.AbstractGramm
 
 	
 	//Model:
-	//    greetings+=Greeting*;
+	//    (Headers+=Header)*
+	//;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -118,14 +714,117 @@ public class DeploymentGrammarAccess extends AbstractElementFinder.AbstractGramm
 		return getModelAccess().getRule();
 	}
 	
-	//Greeting:
-	//    'Hello' name=ID '!';
-	public GreetingElements getGreetingAccess() {
-		return pGreeting;
+	//Header:
+	//    Hpa|Dep//|Svc
+	//;
+	public HeaderElements getHeaderAccess() {
+		return pHeader;
 	}
 	
-	public ParserRule getGreetingRule() {
-		return getGreetingAccess().getRule();
+	public ParserRule getHeaderRule() {
+		return getHeaderAccess().getRule();
+	}
+	
+	//Label:
+	//    name=ID '=' value=STRING
+	//;
+	public LabelElements getLabelAccess() {
+		return pLabel;
+	}
+	
+	public ParserRule getLabelRule() {
+		return getLabelAccess().getRule();
+	}
+	
+	//Metrice:
+	//    ((resource=Resource) '=' limit=INT)
+	//;
+	public MetriceElements getMetriceAccess() {
+		return pMetrice;
+	}
+	
+	public ParserRule getMetriceRule() {
+		return getMetriceAccess().getRule();
+	}
+	
+	//Resource:
+	//    'memory' | 'cpu'
+	//;
+	public ResourceElements getResourceAccess() {
+		return pResource;
+	}
+	
+	public ParserRule getResourceRule() {
+		return getResourceAccess().getRule();
+	}
+	
+	//Container:
+	//    'container' '{'
+	//        'name' '=' Name=STRING ','
+	//        'image' '=' Image=STRING
+	//    '}'
+	//;
+	public ContainerElements getContainerAccess() {
+		return pContainer;
+	}
+	
+	public ParserRule getContainerRule() {
+		return getContainerAccess().getRule();
+	}
+	
+	//Dep:
+	//    '---'
+	//    'deployment'
+	//    '---'
+	//'{'
+	//    'name' '=' Name=STRING ','
+	//    ('namespace' '=' Namespace=STRING  ',')?
+	//    'label'
+	//        '{'
+	//            (Labels+=Label)
+	//            (',' Labels+=Label)*
+	//    '}' ','
+	//    'replicas' '=' Replicas=INT ','
+	//    Containers+=Container
+	//    (',' Containers+=Container)*
+	//'}'
+	//;
+	public DepElements getDepAccess() {
+		return pDep;
+	}
+	
+	public ParserRule getDepRule() {
+		return getDepAccess().getRule();
+	}
+	
+	//Hpa:
+	//    '---'
+	//    'hpa'
+	//    '---'
+	//    '{'
+	//        'name' '=' Name=STRING ','
+	//        ('namespace' '=' Namespace=STRING  ',')?
+	//        'label'
+	//        '{'
+	//            (Labels+=Label)
+	//            (',' Labels+=Label)*
+	//        '}' ','
+	//        'target' '=' Target=STRING ','
+	//        'minimum' '=' Minimum=INT ','
+	//        'maximum' '=' Maximum=INT ','
+	//        'metrices'
+	//        '{'
+	//            Metrices+=Metrice
+	//            (',' Metrices+=Metrice)?
+	//        '}'
+	//    '}'
+	//;
+	public HpaElements getHpaAccess() {
+		return pHpa;
+	}
+	
+	public ParserRule getHpaRule() {
+		return getHpaAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
