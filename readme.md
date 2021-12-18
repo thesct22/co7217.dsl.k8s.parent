@@ -22,6 +22,6 @@ co7217.dsl.k8s.parent/co7217.dsl.k8s/src/test/java/co7217/dsl/k8s/tests
 1. Praveen Mathew
 2. Harini Arumugam
 3. Charly Jose
-4. Sharath C. Thomas
+4. Sharath Cherian Thomas
 5. Sai Sri Teja Unnava
-6. Monica Yadav Laka
+6. Monika Yadav Laka
