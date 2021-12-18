@@ -1,0 +1,41 @@
+---
+deployment
+---
+{
+name="another-example",
+label{
+    alabel="make-this-same-for-svc-and-dep",
+	label2="moreLabels"
+},
+
+replicas=9,
+container{
+    name= "busybox",
+    image= "gcr.io/google-containers/busybox:latest"
+}
+}
+
+---
+service
+---
+{
+name="service",
+
+
+label{
+    app    =       "dsl-example",
+	label2="randomLabel"
+},
+port{
+    name="busybox-expose",
+    protocol=TCP,
+    inport      =      80    ,
+    targetport=80
+},
+
+
+targetLabel="alabel",
+targetName="make-this-same-for-svc-and-dep",
+type=ClusterIP,
+IP="192.168.19.18"
+}

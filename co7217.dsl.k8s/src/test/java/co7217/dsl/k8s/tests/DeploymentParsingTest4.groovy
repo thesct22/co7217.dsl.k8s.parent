@@ -58,7 +58,8 @@ port{
 
 targetLabel="alabel",
 targetName="make-this-same-for-svc-and-dep",
-type=LoadBalancer
+type=ClusterIP,
+IP="192.168.19.18"
 }
 """)
 		Assertions.assertNotNull(result)

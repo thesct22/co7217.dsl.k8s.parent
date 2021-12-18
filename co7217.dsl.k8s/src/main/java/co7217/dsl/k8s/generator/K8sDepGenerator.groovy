@@ -26,20 +26,47 @@ class K8sDepGenerator {
 
 		XtextResourceSet resourceSet = 
 			injector.getInstance(XtextResourceSet.class);
+		
+			
+		//first sample file
+		Resource resource1 = resourceSet.getResource(
+			URI.createFileURI("src/main/resources/dep1.dep"), true);
+		
+		//get the parsed EObject tree from the input file
+		Model model1 = resource1.getContents().get(0)
+		
+		//calling function to iterate the EObject tree
+		String text1 = toYaml(model1.Headers)
+		
+		File output1 = new File('src/main/resources/dep1.yaml')
+		output1.createNewFile()
+		output1 << text1
+		
+		
+		//second sample file
+		Resource resource2 = resourceSet.getResource(
+			URI.createFileURI("src/main/resources/dep2.dep"), true);
+		
+		Model model2 = resource2.getContents().get(0)
 
-		Resource resource = resourceSet.getResource(
-			URI.createFileURI("src/main/resources/dep1.dep"), true);                
+		String text2 = toYaml(model2.Headers)
 		
-		Model model = resource.getContents().get(0)
+		File output2 = new File('src/main/resources/dep2.yaml')
+		output2.createNewFile()
+		output2 << text2
+		
+		
+		//third sample file
+		Resource resource3 = resourceSet.getResource(
+			URI.createFileURI("src/main/resources/dep3.dep"), true);
+		
+		Model model3 = resource3.getContents().get(0)
 
+		String text3 = toYaml(model3.Headers)
 		
-		String text = toYaml(model.Headers)
-		
-		//println(model.Headers.Metrices.toString())
-		println text
-		File output = new File('src/main/resources/dep1.yaml')
-		output.createNewFile()
-		output << text
+		File output3 = new File('src/main/resources/dep3.yaml')
+		output3.createNewFile()
+		output3 << text3
 	}
 	
 	//process list of elements

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:deployment="http://www.dsl.co7217/k8s/Deployment"
+    xsi:schemaLocation="http://www.dsl.co7217/k8s/Deployment Deployment.ecore">
+  <Headers xsi:type="deployment:Dep"
+      Name="another-example"
+      Replicas="9">
+    <Labels
+        name="alabel"
+        value="make-this-same-for-svc-and-dep"/>
+    <Labels
+        name="label2"
+        value="moreLabels"/>
+    <Containers
+        Name="busybox"
+        Image="gcr.io/google-containers/busybox:latest"/>
+  </Headers>
+  <Headers xsi:type="deployment:Svc"
+      Name="service"
+      TargetLabel="alabel"
+      TargetName="make-this-same-for-svc-and-dep"
+      Type="ClusterIP">
+    <Labels
+        name="app"
+        value="dsl-example"/>
+    <Ports Name="busybox-expose"
+        Protocol="tcp"
+        inport="80"
+        targetport="80"/>
+  </Headers>
+</deployment:Model>

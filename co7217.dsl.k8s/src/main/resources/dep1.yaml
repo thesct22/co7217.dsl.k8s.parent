@@ -18,10 +18,10 @@ spec:
         app: "dsl-example"
     spec:
       containers:
-      - name: "busybox"
-        image: "gcr.io/google-containers/busybox:latest"
-      - name: "defaultbackend"
-        image: "gcr.io/google-containers/defaultbackend:latest"
+      - name: "frontend"
+        image: "docker.io/thesct22/fft-frontend:0.1"
+      - name: "backend"
+        image: "docker.io/thesct22/fft-backend:0.1"
 
 ---
 apiVersion: "autoscaling/v2beta1"
@@ -64,5 +64,5 @@ spec:
     targetPort: 8080
   selector:
     app: "dsl-example"
-  type: "LoadBalancer"
-  LoadBalancerIP: "192.168.19.18"
+  type: "NodePort"
+  

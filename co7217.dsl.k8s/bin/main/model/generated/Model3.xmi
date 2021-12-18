@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:deployment="http://www.dsl.co7217/k8s/Deployment"
+    xsi:schemaLocation="http://www.dsl.co7217/k8s/Deployment Deployment.ecore">
+  <Headers xsi:type="deployment:Dep"
+      Name="same-for-dep-and-hpa"
+      Replicas="3">
+    <Labels
+        name="app"
+        value="dsl-example"/>
+    <Labels
+        name="label2"
+        value="moreLabels"/>
+    <Labels
+        name="label3"
+        value="evenmore"/>
+    <Containers
+        Name="busybox"
+        Image="gcr.io/google-containers/busybox:latest"/>
+  </Headers>
+  <Headers xsi:type="deployment:Hpa"
+      Name="hpa"
+      Target="same-for-dep-and-hpa"
+      Minimum="1"
+      Maximum="5">
+    <Labels
+        name="app"
+        value="dsl-example"/>
+    <Metrices
+        resource="cpu"
+        limit="80"/>
+  </Headers>
+  <Headers xsi:type="deployment:Svc"
+      Name="service"
+      TargetLabel="app"
+      TargetName="dsl-example"
+      Type="LoadBalancer">
+    <Labels
+        name="app"
+        value="dsl-example"/>
+    <Labels
+        name="label2"
+        value="randomLabel"/>
+    <Ports Name="busybox-expose"
+        Protocol="TCP"
+        inport="80"
+        targetport="80"/>
+  </Headers>
+</deployment:Model>

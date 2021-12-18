@@ -1,0 +1,65 @@
+
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "same-for-dep-and-hpa"
+  namespace: "default"
+  labels:
+    app: "dsl-example"
+    label2: "moreLabels"
+    label3: "evenmore"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "dsl-example"
+  template:
+    metadata:
+      labels:
+        app: "dsl-example"
+    spec:
+      containers:
+      - name: "busybox"
+        image: "gcr.io/google-containers/busybox:latest"
+
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "hpa"
+  namespace: "default"
+  labels:
+    app: "dsl-example"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "same-for-dep-and-hpa"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
+
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "service"
+  namespace: "default"
+  labels:
+    app: "dsl-example"
+    label2: "randomLabel"
+spec:
+  ports:
+  - name: "busybox-expose"
+    protocol: "TCP"
+    port: 80
+    targetPort: 80
+  selector:
+    app: "dsl-example"
+  type: "LoadBalancer"
+  LoadBalancerIP: ""

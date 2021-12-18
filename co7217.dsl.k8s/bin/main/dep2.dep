@@ -1,0 +1,55 @@
+---
+deployment
+---
+{
+name="same-for-dep-and-hpa",
+label{
+    app="dsl-example",
+	label2="moreLabels",
+	label3="evenmore"
+},
+
+replicas=3,
+container{
+    name= "busybox",
+    image= "gcr.io/google-containers/busybox:latest"
+}
+}
+
+
+---
+hpa
+---
+{
+name="hpa",
+label{
+    app="dsl-example"
+},
+target="same-for-dep-and-hpa",   
+minimum=1,
+maximum=5,
+metrices{
+    cpu=80
+}
+}
+
+
+---
+service
+---
+{
+name="service",
+label{
+    app="dsl-example",
+	label2="randomLabel"
+},
+port{
+    name="busybox-expose",
+    protocol=TCP,
+    inport=80,
+    targetport=80
+},
+targetLabel="app",
+targetName="dsl-example",
+type=LoadBalancer
+}
