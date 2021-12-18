@@ -9,7 +9,14 @@ co7217.dsl.k8s.parent/co7217.dsl.k8s/src/main/java/co7217/dsl/k8s/Deployment.xte
 co7217.dsl.k8s.parent/co7217.dsl.k8s/src/main/java/co7217/dsl/k8s/generator/K8sDepGenerator.groovy
 
 **ECore:**
-co7217.dsl.k8s.parent/co7217.dsl.k8s/model/generated/Deployment.ecore
+co7217.dsl.k8s.parent/co7217.dsl.k8s/src/main/resources/model/generated/Deployment.ecore
+
+**Sample inputs and output**
+co7217.dsl.k8s.parent/co7217.dsl.k8s/src/main/resources/
+Inputs are .dep files and outputs are .yaml files
+
+**Unit Test Files**
+co7217.dsl.k8s.parent/co7217.dsl.k8s/src/test/java/co7217/dsl/k8s/tests
 
 ## Team Members
 1. Praveen Mathew
